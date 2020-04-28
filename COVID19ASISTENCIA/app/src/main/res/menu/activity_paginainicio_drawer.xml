@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_inicio"
+            android:icon="@drawable/iconoinicio"
+            android:title="Inicio" />
+        <item
+            android:id="@+id/nav_noticias"
+            android:icon="@drawable/icononoticias"
+            android:title="Noticias y alertas" />
+        <item
+            android:id="@+id/nav_casos"
+            android:icon="@drawable/iconocasos"
+            android:title="Cifras Totales" />
+        <item
+            android:id="@+id/nav_triaje"
+            android:icon="@drawable/iconotriaje"
+            android:title="Triaje" />
+
+    </group>
+
+    <item android:title="Communicate">
+        <menu>
+            <item
+                android:id="@+id/nav_chat"
+                android:icon="@drawable/ic_menu_share"
+                android:title="Chat" />
+            <item
+                android:id="@+id/nav_contactos"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Contactos" />
+        </menu>
+    </item>
+
+</menu>
