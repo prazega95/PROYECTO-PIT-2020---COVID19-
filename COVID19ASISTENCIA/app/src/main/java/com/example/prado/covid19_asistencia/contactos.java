@@ -1,25 +1,23 @@
 package com.example.prado.covid19_asistencia;
 
 import android.content.Context;
-import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link triaje.OnFragmentInteractionListener} interface
+ * {@link contactos.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link triaje#newInstance} factory method to
+ * Use the {@link contactos#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class triaje extends Fragment {
+public class contactos extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -31,7 +29,7 @@ public class triaje extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    public triaje() {
+    public contactos() {
         // Required empty public constructor
     }
 
@@ -41,11 +39,11 @@ public class triaje extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment triaje.
+     * @return A new instance of fragment contactos.
      */
     // TODO: Rename and change types and number of parameters
-    public static triaje newInstance(String param1, String param2) {
-        triaje fragment = new triaje();
+    public static contactos newInstance(String param1, String param2) {
+        contactos fragment = new contactos();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -62,59 +60,12 @@ public class triaje extends Fragment {
         }
     }
 
-
-
-
-
-
-
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
-
-
-        //declararas variales de los botones
-        Button btn1;
-
-
-
-        // aqui es para llamar al activy main
-        View view = inflater.inflate(R.layout.fragment_triaje,container,false);
-        btn1 =(Button) view.findViewById(R.id.btnIniciarRegistro);
-
-
-
-        //Clase intent para llamar al activity
-        btn1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent int1 = new Intent(getActivity(), iniciartriaje.class);
-                getActivity().startActivity(int1);
-            }
-        });
-
-
-
-        return view;
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_contactos, container, false);
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {

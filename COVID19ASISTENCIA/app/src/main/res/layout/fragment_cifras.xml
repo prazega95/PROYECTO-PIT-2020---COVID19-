@@ -14,7 +14,7 @@
         android:id="@+id/cifrasgenerales"
         android:layout_width="328dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="80dp"
+        android:layout_marginLeft="60dp"
         android:layout_marginTop="10dp"
         android:fontFamily="@font/cabin"
         android:text="Cifras Generales"
