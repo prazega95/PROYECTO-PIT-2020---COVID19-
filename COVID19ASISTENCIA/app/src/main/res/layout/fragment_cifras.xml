@@ -8,17 +8,15 @@
     tools:context=".cifras">
 
 
-
-
     <TextView
         android:id="@+id/cifrasgenerales"
-        android:layout_width="328dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="60dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginLeft="110dp"
+        android:layout_marginTop="30dp"
         android:fontFamily="@font/cabin"
-        android:text="Cifras Generales"
-        android:textSize="35sp" />
+        android:text="CIFRAS "
+        android:textSize="40sp" />
 
     <ImageView
         android:id="@+id/img_confirmado"
@@ -55,9 +53,9 @@
 
     <EditText
         android:id="@+id/edt_confirmados"
-        android:layout_width="180dp"
+        android:layout_width="100dp"
         android:layout_height="72dp"
-        android:layout_marginLeft="130dp"
+        android:layout_marginLeft="170dp"
         android:layout_marginTop="195dp"
         android:backgroundTint="#FFFFFF"
         android:ems="1000"
@@ -65,27 +63,27 @@
 
     <EditText
         android:id="@+id/edt_nuevos"
-        android:layout_width="150dp"
+        android:layout_width="100dp"
         android:layout_height="60dp"
-        android:layout_marginLeft="35dp"
+        android:layout_marginLeft="60dp"
         android:layout_marginTop="300dp"
         android:backgroundTint="#000000"
         android:ems="1000"
         android:inputType="number" />
     <EditText
         android:id="@+id/edt_muertes"
-        android:layout_width="150dp"
+        android:layout_width="100dp"
         android:layout_height="60dp"
-        android:layout_marginLeft="35dp"
+        android:layout_marginLeft="60dp"
         android:layout_marginTop="380dp"
         android:backgroundTint="#000000"
         android:ems="1000"
         android:inputType="number" />
     <EditText
         android:id="@+id/edt_recuperados"
-        android:layout_width="150dp"
+        android:layout_width="100dp"
         android:layout_height="60dp"
-        android:layout_marginLeft="35dp"
+        android:layout_marginLeft="60dp"
         android:layout_marginTop="465dp"
         android:backgroundTint="#000000"
         android:ems="1000"
