@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fondo"
+    tools:context=".datospersonales">
+
+
+
+
+
+
+
+    <TextView
+        android:id="@+id/txtDatosPersonales"
+        android:layout_width="237dp"
+        android:layout_height="37dp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="30dp"
+        android:text="DATOS PERSONALES"
+        android:textSize="24sp" />
+
+
+
+
+    <EditText
+        android:id="@+id/edtNombre"
+        android:layout_width="328dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="140dp"
+        android:hint="Nombre Completos:" />
+
+
+
+
+
+
+    <EditText
+        android:id="@+id/edtApellidos"
+        android:layout_width="328dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="200dp"
+        android:hint="Apellidos Completos:" />
+
+
+    <TextView
+        android:id="@+id/textDocumento"
+        android:layout_width="84dp"
+        android:layout_height="23dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="280dp"
+        android:layout_weight="1"
+        android:text="Documento:" />
+
+    <Spinner
+        android:id="@+id/cboDocumento"
+        android:layout_width="127dp"
+        android:layout_height="33dp"
+        android:layout_marginLeft="20dp"
+
+        android:layout_marginTop="300dp" />
+
+    <EditText
+        android:id="@+id/txtDocumento"
+        android:layout_width="178dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="160dp"
+        android:layout_marginTop="300dp"
+        android:ems="10"
+        android:inputType="number" />
+
+    <EditText
+        android:id="@+id/edtTelefono"
+        android:layout_width="328dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="360dp"
+        android:hint="Telefono :"
+        android:inputType="number"
+        android:maxLength="9" />
+
+    <Button
+        android:id="@+id/btnSiguienteDatosP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="145dp"
+        android:layout_marginTop="450dp"
+
+        android:text="SIGUIENTE" />
+
+
+
+
+
+</FrameLayout>
