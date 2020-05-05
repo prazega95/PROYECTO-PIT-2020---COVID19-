@@ -26,7 +26,8 @@ public class paginainicio extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
            noticias.OnFragmentInteractionListener,
            cifras.OnFragmentInteractionListener,
-           triaje.OnFragmentInteractionListener
+           triaje.OnFragmentInteractionListener,
+           datospersonales.OnFragmentInteractionListener
            {
 
 
@@ -139,6 +140,11 @@ public class paginainicio extends AppCompatActivity
         if (id == R.id.nav_inicio) {
             fragment = new Fragment();
             fragmentoSeleccionado=true;
+
+        } else if (id == R.id.nav_datospersonales) {
+
+            fragment = new datospersonales();
+            fragmentoSeleccionado = true;
 
 
 
