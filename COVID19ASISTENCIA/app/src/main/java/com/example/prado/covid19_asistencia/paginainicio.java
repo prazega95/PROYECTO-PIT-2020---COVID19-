@@ -27,7 +27,8 @@ public class paginainicio extends AppCompatActivity
            noticias.OnFragmentInteractionListener,
            cifras.OnFragmentInteractionListener,
            triaje.OnFragmentInteractionListener,
-           datospersonales.OnFragmentInteractionListener
+           datospersonales.OnFragmentInteractionListener,
+           contactos.OnFragmentInteractionListener
            {
 
 
@@ -166,11 +167,21 @@ public class paginainicio extends AppCompatActivity
             fragment = new triaje();
             fragmentoSeleccionado = true;
 
-        }
 
 
 
-            //Para que lo seleccionado aparesca dentro del contenedor principal
+        } else if (id == R.id.nav_contactos) {
+
+               fragment = new contactos();
+               fragmentoSeleccionado = true;
+
+           }
+
+
+
+
+
+               //Para que lo seleccionado aparesca dentro del contenedor principal
             if(fragmentoSeleccionado){
                 getSupportFragmentManager().beginTransaction().replace(R.id.Contenedor,fragment).commit();
             }

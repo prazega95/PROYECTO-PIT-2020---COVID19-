@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/fondo"
     tools:context=".contactos">
 
 
@@ -41,13 +42,14 @@
         android:layout_marginLeft="55dp"
         android:layout_marginTop="250dp"
         android:src="@drawable/telefono" />
+
     <TextView
         android:id="@+id/textView16"
-        android:layout_width="238dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="70dp"
-        android:layout_marginTop="270dp"
-        android:text="Linea de atencion"
-        android:textSize="40sp" />
+        android:layout_width="228dp"
+        android:layout_height="92dp"
+        android:layout_marginLeft="160dp"
+        android:layout_marginTop="250dp"
+        android:text="113"
+        android:textSize="50sp" />
 
 </FrameLayout>

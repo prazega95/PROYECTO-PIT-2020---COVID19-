@@ -91,7 +91,7 @@ public class triaje extends Fragment {
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent int1 = new Intent(getActivity(), iniciartriaje.class);
+                Intent int1 = new Intent(getActivity(), sintomas1.class);
                 getActivity().startActivity(int1);
             }
         });
