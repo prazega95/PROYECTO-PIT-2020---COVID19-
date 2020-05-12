@@ -9,11 +9,13 @@
     <TextView
         android:id="@+id/textView5"
         android:layout_width="316dp"
-        android:layout_height="45dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="64dp"
+        android:layout_height="68dp"
+        android:layout_marginTop="40dp"
+        android:fontFamily="@font/regular"
+        android:gravity="center"
         android:text="Selecciona los sintomas que has padecido recientemente:"
+
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -35,6 +37,9 @@
         android:layout_marginStart="48dp"
         android:layout_marginTop="12dp"
         android:text="Tos"
+
+        android:fontFamily="@font/light"
+
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/checkBox" />
 
@@ -45,6 +50,7 @@
         android:layout_marginStart="48dp"
         android:layout_marginTop="12dp"
         android:text="Dolor de cabeza"
+        android:fontFamily="@font/light"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/checkBox2" />
 
@@ -54,6 +60,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="48dp"
         android:layout_marginTop="12dp"
+        android:fontFamily="@font/light"
         android:text="Dolor de garganta."
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/checkBox3" />
@@ -64,6 +71,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="48dp"
         android:layout_marginTop="12dp"
+        android:fontFamily="@font/light"
         android:text="Dificultad para respirar (disnea)."
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/checkBox4" />
@@ -74,6 +82,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="48dp"
         android:layout_marginTop="16dp"
+        android:fontFamily="@font/light"
         android:text="Escalofríos y malestar general."
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/checkBox5" />
@@ -84,6 +93,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="48dp"
         android:layout_marginTop="16dp"
+        android:fontFamily="@font/light"
         android:text="Dolores musculares"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/checkBox6" />
@@ -96,6 +106,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:fontFamily="@font/light"
         android:text="SIGUIENTE"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

@@ -9,10 +9,6 @@
             android:id="@+id/nav_inicio"
             android:icon="@drawable/iconoinicio"
             android:title="Inicio" />
-
-        <item
-            android:id="@+id/nav_datospersonales"
-            android:title="Datos Personales" />
         <item
             android:id="@+id/nav_noticias"
             android:icon="@drawable/icononoticias"

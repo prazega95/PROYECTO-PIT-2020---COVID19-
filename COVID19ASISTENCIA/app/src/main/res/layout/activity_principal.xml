@@ -4,25 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     tools:context=".principal">
-
-    <Button
-        android:id="@+id/btnIniciar"
-        android:layout_width="169dp"
-        android:layout_height="47dp"
-        android:layout_marginBottom="32dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:text="INICIAR"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/imgCovid19"
-        android:layout_width="302dp"
-        android:layout_height="166dp"
+        android:layout_width="297dp"
+        android:layout_height="153dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="4dp"
@@ -34,19 +22,110 @@
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="219dp"
-        android:layout_height="83dp"
-        android:layout_marginBottom="8dp"
+        android:layout_width="287dp"
+        android:layout_height="39dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="208dp"
-        android:text="Bienvenidos a la asistencia medica inmediata, es una aplicacion para llevar un seguimiento de casos y un reporte del avance del virus en el pais."
-        app:layout_constraintBottom_toTopOf="@+id/btnIniciar"
+        android:fontFamily="@font/light"
+        android:text="Bienvenidos a la asistencia medica COVID19, por favor, inicie sesion."
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgCovid19"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toBottomOf="@+id/imgCovid19" />
+
+
+    <EditText
+        android:id="@+id/edtLoginPrincipal"
+        android:layout_width="300dp"
+        android:layout_height="50sp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="28dp"
+
+        android:background="@drawable/input_field"
+        android:ems="10"
+        android:fontFamily="@font/light"
+        android:hint="Ingrese su usuario"
+        android:inputType="textPersonName"
+        android:textColorHint="@color/gray"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <EditText
+        android:id="@+id/edtPassPrincipal"
+        android:layout_width="300dp"
+        android:layout_height="50sp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+
+
+        android:background="@drawable/input_field"
+        android:ems="10"
+        android:fontFamily="@font/light"
+        android:hint="Ingrese su contraseña"
+        android:inputType="textPersonName"
+
+
+        android:password="true"
+        android:textColorHint="@color/gray"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtLoginPrincipal" />
+
+
+    <Button
+
+        android:id="@+id/btnINICIAR"
+        android:layout_width="130dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/button"
+        android:text="INICIAR"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.15"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtPassPrincipal" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="600dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textView17"
+            android:layout_width="92dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/light"
+            android:text="Aun no eres usuario?"
+            android:textColor="@color/gray" />
+
+        <TextView
+            android:id="@+id/textRegistrarme"
+            android:layout_width="10dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+
+            android:layout_weight="1"
+            android:fontFamily="@font/bold"
+            android:text="Registrarme"
+            android:textColor="@color/red"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/textView17"
+            app:layout_constraintTop_toBottomOf="@+id/btnINICIAR"
+            app:layout_constraintVertical_bias="0.582" />
+    </LinearLayout>
 
 
 </android.support.constraint.ConstraintLayout>

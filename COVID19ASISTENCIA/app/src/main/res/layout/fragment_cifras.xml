@@ -12,18 +12,24 @@
         android:id="@+id/cifrasgenerales"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="110dp"
-        android:layout_marginTop="30dp"
-        android:fontFamily="@font/cabin"
+        android:layout_marginTop="-210dp"
         android:text="CIFRAS "
-        android:textSize="40sp" />
+
+        android:fontFamily="@font/light"
+        android:textSize="40sp"
+        android:layout_gravity="center" />
+
+
+
 
     <ImageView
         android:id="@+id/img_confirmado"
         android:layout_width="310dp"
         android:layout_height="200dp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginTop="138dp"
+
+        android:layout_gravity="center"
+        android:layout_marginTop="-55dp"
+
         android:src="@drawable/confirmados" />
 
 
@@ -31,32 +37,40 @@
         android:id="@+id/img_nuevos"
         android:layout_width="310dp"
         android:layout_height="178dp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginTop="250dp"
+
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp"
+
         android:src="@drawable/nuevos" />
 
     <ImageView
         android:id="@+id/img_muertes"
         android:layout_width="310dp"
         android:layout_height="178dp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginTop="330dp"
+
+        android:layout_gravity="center"
+        android:layout_marginTop="130dp"
+
         android:src="@drawable/muertes" />
 
     <ImageView
         android:id="@+id/img_recuperados"
         android:layout_width="310dp"
         android:layout_height="178dp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginTop="410dp"
+
+        android:layout_gravity="center"
+        android:layout_marginTop="215dp"
+
         android:src="@drawable/recuperados" />
+
+
 
     <EditText
         android:id="@+id/edt_confirmados"
         android:layout_width="100dp"
         android:layout_height="72dp"
         android:layout_marginLeft="170dp"
-        android:layout_marginTop="195dp"
+        android:layout_marginTop="180dp"
         android:backgroundTint="#FFFFFF"
         android:ems="1000"
         android:inputType="number" />

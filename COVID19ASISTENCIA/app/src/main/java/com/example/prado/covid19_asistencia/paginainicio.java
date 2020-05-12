@@ -1,12 +1,11 @@
 package com.example.prado.covid19_asistencia;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -15,8 +14,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
-
 
 
 public class paginainicio extends AppCompatActivity
@@ -27,8 +24,9 @@ public class paginainicio extends AppCompatActivity
            noticias.OnFragmentInteractionListener,
            cifras.OnFragmentInteractionListener,
            triaje.OnFragmentInteractionListener,
-           datospersonales.OnFragmentInteractionListener,
+           chat.OnFragmentInteractionListener,
            contactos.OnFragmentInteractionListener
+
            {
 
 
@@ -51,7 +49,6 @@ public class paginainicio extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
 
 
     }
@@ -96,18 +93,27 @@ public class paginainicio extends AppCompatActivity
 
 
 
-  /*  @Override
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
+        // PARA PODER CERRAR SESION DESDE LA BOTON DEL COSTADO SUPERIOR DERECHA
         if (id == R.id.action_settings) {
+
+            SharedPreferences preferences=getSharedPreferences("preferenciaslogin", Context.MODE_PRIVATE);
+            preferences.edit().clear().commit();
+
+            Intent intent = new Intent(getApplicationContext(),principal.class);
+            startActivity(intent);
+            finish();
+
+
             return true;
         }
 
         return super.onOptionsItemSelected(item);
-    }*/
+    }
 
 
 
@@ -142,11 +148,6 @@ public class paginainicio extends AppCompatActivity
             fragment = new Fragment();
             fragmentoSeleccionado=true;
 
-        } else if (id == R.id.nav_datospersonales) {
-
-            fragment = new datospersonales();
-            fragmentoSeleccionado = true;
-
 
 
         } else if (id == R.id.nav_noticias) {
@@ -165,6 +166,13 @@ public class paginainicio extends AppCompatActivity
         } else if (id == R.id.nav_triaje) {
 
             fragment = new triaje();
+            fragmentoSeleccionado = true;
+
+
+
+        } else if (id == R.id.nav_chat) {
+
+            fragment = new chat();
             fragmentoSeleccionado = true;
 
 
