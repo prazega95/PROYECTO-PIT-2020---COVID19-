@@ -1,0 +1,201 @@
+<!DOCTYPE html [
+    <!ENTITY nbsp "&#160;">
+    <!ENTITY bull "&#8226;">
+    <!ENTITY copy "&#169;">
+]>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<f:facet name="first">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta name="viewport"
+			content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<link rel="shortcut icon" type="image/png"
+			href="#{request.contextPath}/resources/main/images/corona.png" />
+	</f:facet>
+
+	<title>COVID19</title>
+	<h:outputStylesheet name="main/css/showcase.css" />
+	<h:outputStylesheet name="main/css/perfect-scrollbar.css" />
+	<h:outputStylesheet name="main/css/sh.css" />
+	
+	<h:outputScript name="jquery/jquery.js" library="primefaces" />
+	<h:outputScript name="jquery/jquery-plugins.js" library="primefaces" />
+	<h:outputScript name="main/js/perfect-scrollbar.js" />
+	<h:outputScript name="main/js/showcase.js" />
+	<h:outputScript name="main/js/JsPage.js" />
+	<ui:insert name="head" />
+	<script>
+		PrimeFaces.locales['es'] = {
+			closeText : 'Cerrar',
+			prevText : 'Anterior',
+			nextText : 'Siguiente',
+			monthNames : ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'],
+			monthNamesShort : ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'],
+			dayNames : ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'],
+			dayNamesShort : ['Dom','Lun','Mar','Mie','Jue','Vie','Sab'],
+			dayNamesMin : ['D','L','M','M','J','V','S' ],
+			weekHeader : 'Semana',
+			firstDay : 1,
+			isRTL : false,
+			showMonthAfterYear : false,
+			yearSuffix : '',
+			timeOnlyTitle : 'Sólo hora',
+			timeText : 'Tiempo',
+			hourText : 'Hora',
+			minuteText : 'Minuto',
+			secondText : 'Segundo',
+			currentText : 'Fecha actual',
+			ampm : false,
+			month : 'Mes',
+			week : 'Semana',
+			day : 'Día',
+			allDayText : 'Todo el día'
+		};
+		
+	</script>
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push([ '_setAccount', 'UA-12200033-1' ]);
+		_gaq.push([ '_trackPageview' ]);
+
+		(function() {
+			var ga = document.createElement('script');
+			ga.type = 'text/javascript';
+			ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl'
+					: 'http://www')
+					+ '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0];
+			s.parentNode.insertBefore(ga, s);
+		})();
+
+		$(document).ready(function() {
+
+			$(window).resize(function() {
+				var $this = $('#CONTENTSIDE');
+				var $header = $this.children('.ui-dialog-titlebar');
+				var $content = $this.children('.ui-dialog-content');
+
+				var maxHeight = $(window).height() - 60;
+
+				$('#CONTENTSIDE').css({'max-height': (maxHeight) + 'px',
+										'min-height': (maxHeight) + 'px'});
+				
+				var vert = $('.title-vertical-menu').height();
+				var men = $('#MENUSIDE').height();
+				var tot = (men - vert)/3;
+				$('.title-vertical-menu').css('padding-top',tot+'px');
+			});
+			
+			
+			$(document).off('click','.title-vertical-menu.show').on('click','.title-vertical-menu.show',function(){
+				
+				
+				$(this).removeClass('show').addClass('hide');
+				
+				$('#MENUSIDE').animate({width: '30px'},500,function(){
+					$('#MENUSIDEindent').hide();	
+				});
+  				$('#CONTENTSIDE').animate({'margin-left': '30px'},500);
+			})
+			
+			
+			$(document).off('click','.title-vertical-menu.hide').on('click','.title-vertical-menu.hide',function(){
+				
+				$('#MENUSIDEindent').show();
+				$(this).removeClass('hide').addClass('show');
+  				$("#MENUSIDE").animate({width: "220px"},500,function(){
+  						
+  				});
+  				$("#CONTENTSIDE").animate({'margin-left': "220px"},500);
+			});
+			
+			$(document).off('keypress','.no-edit').on('keypress','.no-edit',function(){
+				return false;
+			});
+			
+			$(window).trigger('resize');
+			
+		});
+		
+		function hideItem(id) {
+	        var element = document.getElementById(id);
+	        element.style.display = 'none';
+      	}
+		
+		function showItem(id) {
+	        var element = document.getElementById(id);
+			element.style.display = 'block'
+      	}
+		
+	</script>
+
+</h:head>
+
+<h:body>
+
+	<div class="MC-menuNavBar">
+	<h1 align="center" style="color: white">SISTEMA COVID19</h1>
+	</div>
+
+	<div style="width: 100%; height: 61px;"></div>
+
+	<div id="MENUSIDE">
+		<div id="MENUSIDEindent" style="float: left;">
+			<span id="LOGO" class="bordersOfMenuSide"> <h:graphicImage
+					name="main/images/covidcor.png" />
+			</span>
+			<div class="ui-widget submenu-content">
+				<div class="ui-widget submenu-content">
+					<table>
+		                        <tr>
+		                            <td style="width:100%">
+		                                <ul>
+												  <li>
+												  		<a href="#{request.contextPath}/ui/listaUsuario.jsf">
+												  			Usuario 
+												  		</a>
+												  </li> 
+												   
+		                                </ul>
+		                            </td>
+		                        </tr>
+		             </table>
+				</div>
+			</div>
+		</div>
+		<div class="title-vertical-menu show" style="float: right;"
+			onfocus="console.log(this);">
+			<strong> C<br />O<br />R<br />O<br />N<br />A<br />V<br />I<br />R<br />U<br />S<br />
+			</strong>
+		</div>
+
+	</div>
+	<div id="CONTENTSIDE">
+		<div id="CONTENTSIDEindent">
+			<div class="ContentSideSections">
+				<div class="Content100 overHidden TextShadow">
+					<span
+						class="fontSize30 TextShadow orange regularFont marginBottom20 dispBlock"
+						id="title-template"> <ui:insert name="title" />
+					</span>
+				</div>
+			</div>
+			<div class="content-container" style="padding: 15px;"
+				id="contenedor-template">
+				<ui:insert name="content" />
+			</div>
+		</div>
+
+	</div>
+
+</h:body>
+
+</html>
