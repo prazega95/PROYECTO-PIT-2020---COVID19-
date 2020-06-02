@@ -27,11 +27,12 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
-        <activity android:name=".sintomas1" />
+        <activity android:name=".registrardatospersonales" />
         <activity android:name=".sintomas2" />
         <activity android:name=".sintomas3" />
-        <activity android:name=".registrardatospersonales" />
-        <activity android:name=".principal"></activity>
+        <activity android:name=".sintomas1" />
+        <activity android:name=".principal" />
+        <activity android:name=".pantalla_registro_exitoso"></activity>
     </application>
 
 </manifest>

@@ -72,8 +72,10 @@ public class principal extends AppCompatActivity implements View.OnClickListener
                 usuario=edtUser.getText().toString();
                 password=edtPass.getText().toString();
 
+
                 if (!usuario.isEmpty()&& !password.isEmpty()){
-                    validarUsuario("http://192.168.2.12:8080/ejemploBDRemota/validar_usuarioCovid.php");
+                  //  validarUsuario( "https://proyectocovid19.000webhostapp.com/ejemploBDRemota/validar_usuarioCovid.php");
+                    validarUsuario( "http://192.168.2.2:8080/ejemploBDRemota/validar_usuarioCovid.php");
                 }else{
                     Toast.makeText(principal.this,"No se permiten campos vacios",Toast.LENGTH_SHORT).show();
                 }

@@ -150,6 +150,7 @@ public class paginainicio extends AppCompatActivity
 
 
 
+
         } else if (id == R.id.nav_noticias) {
             fragment = new noticias();
             fragmentoSeleccionado=true;

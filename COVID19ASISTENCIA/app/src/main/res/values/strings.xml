@@ -13,8 +13,8 @@
     <string name="title_activity_registrar_datos_personales">registrarDatosPersonales</string>
 
 
-    <string name="ip">http://192.168.2.12:8080</string>
-    <string name="ip2">https://192proyectocovid19.000webhostapp.com</string>
+    <string name="ip">http://192.168.2.2:8080</string>
+    <string name="ip22">https://proyectocovid19.000webhostapp.com</string>
 
 
 </resources>

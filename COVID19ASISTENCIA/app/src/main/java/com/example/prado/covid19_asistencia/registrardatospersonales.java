@@ -27,10 +27,6 @@ public class registrardatospersonales extends AppCompatActivity implements   Res
              apellido,
              documento,
              telefono,
-             departamento,
-             provincia,
-             distrito,
-             direccion,
              login,
              pass;
 
@@ -52,10 +48,6 @@ public class registrardatospersonales extends AppCompatActivity implements   Res
         apellido = (EditText) findViewById(R.id.edtApellidos);
         documento = (EditText) findViewById(R.id.edtDocumentos);
         telefono = (EditText) findViewById(R.id.edtTelefono);
-        departamento = (EditText) findViewById(R.id.edtDepartamento);
-        provincia = (EditText) findViewById(R.id.edtProvincia);
-        distrito = (EditText) findViewById(R.id.edtDistrito);
-        direccion = (EditText) findViewById(R.id.edtDireccion);
         login = (EditText) findViewById(R.id.edtUsuario);
         pass = (EditText) findViewById(R.id.edtClave);
 
@@ -99,10 +91,6 @@ public class registrardatospersonales extends AppCompatActivity implements   Res
                 "&ape_usuario="+apellido.getText().toString()+
                 "&doc_usuario="+documento.getText().toString()+
                 "&tel_usuario="+telefono.getText().toString()+
-                "&dep_usuario="+departamento.getText().toString()+
-                "&prov_usuario="+provincia.getText().toString()+
-                "&dist_usuario="+distrito.getText().toString()+
-                "&direcc_usuario="+direccion.getText().toString()+
                 "&login_usuario="+login.getText().toString()+
                 "&pass_usuario="+pass.getText().toString();
 
@@ -124,10 +112,6 @@ public class registrardatospersonales extends AppCompatActivity implements   Res
            apellido.setText("");
            documento.setText("");
            telefono.setText("");
-           departamento.setText("");
-           provincia.setText("");
-           distrito.setText("");
-           direccion.setText("");
            login.setText("");
            pass.setText("");
        }

@@ -4,32 +4,80 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/fondo"
+    android:background="#491111"
     tools:context=".triaje">
 
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="303dp"
-        android:layout_height="148dp"
-        android:layout_marginLeft="34dp"
-        android:layout_marginTop="30dp"
-        android:adjustViewBounds="false"
-        android:src="@drawable/triaje" />
+        android:layout_width="208dp"
+        android:layout_height="68dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="-230dp"
+        android:src="@drawable/triajelogo" />
 
-    <Button
-        android:id="@+id/btnIniciarRegistro"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="140dp"
-        android:layout_marginTop="450dp"
-        android:text="INICIAR" />
+
+
+
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="206dp"
-        android:layout_height="73dp"
+        android:layout_height="85dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="-60dp"
+        android:fontFamily="@font/regular"
+        android:text="Bienvenido(a), le invitamos a responder una serie de preguntas para llevar su caso o de algun familiar registrado en nuestra app"
+        android:textColor="#FFFFFF" />
+
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="200dp"
+        android:layout_height="31dp"
         android:layout_marginLeft="80dp"
-        android:layout_marginTop="350dp"
-        android:text="Bienvenidos a la seccion de triaje, necesitamos completar las preguntas para poder llevar un control de su caso." />
+        android:layout_marginTop="330dp"
+        android:fontFamily="@font/regular"
+        android:text="Ingrese su DNI:"
+        android:textColor="#FFFFFF" />
+
+
+    <EditText
+        android:id="@+id/campoDocumento"
+        android:layout_width="198dp"
+        android:layout_height="58dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="110dp"
+        android:background="@drawable/input_field"
+        android:ems="8"
+        android:fontFamily="@font/light"
+        android:hint="Digitar:"
+        android:inputType="number"
+        android:maxLength="8"
+        android:textSize="24sp" />
+
+
+
+
+
+
+
+
+    <Button
+        android:id="@+id/btnIniciarRegistro"
+        android:layout_width="144dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="230dp"
+        android:background="@drawable/button"
+        android:fontFamily="@font/regular"
+        android:text="INICIAR" />
+
+
+
+
+
+
+
+
 </FrameLayout>

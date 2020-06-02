@@ -1,14 +1,30 @@
 package com.example.prado.covid19_asistencia;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 
 /**
@@ -19,7 +35,7 @@ import android.widget.Button;
  * Use the {@link triaje#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class triaje extends Fragment {
+public class triaje extends Fragment implements Response.Listener<JSONObject>,Response.ErrorListener{
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -31,10 +47,28 @@ public class triaje extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
+
+
+
+
+    /////////////declararas variales de los botones
+
+    EditText campoDocumento;
+    Button btn1;
+
+
+    ProgressDialog progreso;
+    RequestQueue request;
+    JsonObjectRequest jsonObjectRequest;
+
+
+
+
+
+
     public triaje() {
         // Required empty public constructor
     }
-
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
@@ -43,6 +77,7 @@ public class triaje extends Fragment {
      * @param param2 Parameter 2.
      * @return A new instance of fragment triaje.
      */
+
     // TODO: Rename and change types and number of parameters
     public static triaje newInstance(String param1, String param2) {
         triaje fragment = new triaje();
@@ -70,36 +105,95 @@ public class triaje extends Fragment {
 
 
 
+
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+       // aqui es para llamar al activy main
+        View vista = inflater.inflate(R.layout.fragment_triaje,container,false);
 
 
+        campoDocumento= (EditText) vista.findViewById(R.id.campoDocumento);
+        btn1 =(Button) vista.findViewById(R.id.btnIniciarRegistro);
 
-        //declararas variales de los botones
-        Button btn1;
-
-
-
-        // aqui es para llamar al activy main
-        View view = inflater.inflate(R.layout.fragment_triaje,container,false);
-        btn1 =(Button) view.findViewById(R.id.btnIniciarRegistro);
-
+        request= Volley.newRequestQueue(getContext());
 
 
         //Clase intent para llamar al activity
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent int1 = new Intent(getActivity(), sintomas1.class);
-                getActivity().startActivity(int1);
+
+                cargarWebService();
+
             }
         });
 
-
-
-        return view;
+        return vista;
     }
+
+
+
+    private void cargarWebService() {
+
+        progreso=new ProgressDialog(getContext());
+        progreso.setMessage("Consultando...");
+        progreso.show();
+
+        String ip=getString(R.string.ip);
+
+        String url=ip+"/ejemploBDRemota/wsJSONConsultarUsuario.php?doc_usuario="
+                +campoDocumento.getText().toString();
+
+        jsonObjectRequest=new JsonObjectRequest(Request.Method.GET,url,null,this,this);
+        request.add(jsonObjectRequest);
+    }
+
+
+    @Override
+    public void onErrorResponse(VolleyError error) {
+        progreso.hide();
+        Toast.makeText(getContext(),"No se pudo Consultar "+error.toString(),Toast.LENGTH_SHORT).show();
+        Log.i("ERROR",error.toString());
+    }
+
+    @Override
+    public void onResponse(JSONObject response) {
+        progreso.hide();
+
+        Usuario miUsuario=new Usuario();
+
+        JSONArray json=response.optJSONArray("usuario");
+        JSONObject jsonObject=null;
+
+        try {
+            jsonObject=json.getJSONObject(0);
+            miUsuario.setId(jsonObject.optString("cod_usuario"));
+            miUsuario.setNombre(jsonObject.optString("nom_usuario"));
+
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+
+        }
+
+        // ENVIANDO LOS DATOS DEL DNI CONSULTADO AL ACTIVITYSINTOMAS 1 CON LA VARIABLE ID
+        // Y NOMBRE EN MODOD PUBLIC STATIC FINAL PREVIAMENTE DECLARADO EN SINTOMAS1
+        Intent int1 = new Intent(getActivity(), sintomas1.class);
+        int1.putExtra(sintomas1.ID,miUsuario.getId());
+        int1.putExtra(sintomas1.NOMBRE,miUsuario.getNombre());
+        getActivity().startActivity(int1);
+
+    }
+
+
+
+
+
+
+
 
 
 
