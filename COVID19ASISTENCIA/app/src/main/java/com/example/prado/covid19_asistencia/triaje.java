@@ -45,24 +45,22 @@ public class triaje extends Fragment implements Response.Listener<JSONObject>,Re
     private String mParam1;
     private String mParam2;
 
+
+
+
     private OnFragmentInteractionListener mListener;
 
 
-
-
-
     /////////////declararas variales de los botones
-
     EditText campoDocumento;
     Button btn1;
 
-
+    //BARRA DE PROGRESO
     ProgressDialog progreso;
+
+    //METODOS JSON
     RequestQueue request;
     JsonObjectRequest jsonObjectRequest;
-
-
-
 
 
 
@@ -121,18 +119,19 @@ public class triaje extends Fragment implements Response.Listener<JSONObject>,Re
         request= Volley.newRequestQueue(getContext());
 
 
-        //Clase intent para llamar al activity
+
+///////////////////////////////////////////////////////////////////////////// BOTON BUSCAR DNI, WEB SERVIS Y PASAR AL SGTE ACTIVITY
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 cargarWebService();
-
             }
         });
 
         return vista;
     }
+
 
 
 
@@ -145,7 +144,7 @@ public class triaje extends Fragment implements Response.Listener<JSONObject>,Re
         String ip=getString(R.string.ip);
 
         String url=ip+"/ejemploBDRemota/wsJSONConsultarUsuario.php?doc_usuario="
-                +campoDocumento.getText().toString();
+                     +campoDocumento.getText().toString();
 
         jsonObjectRequest=new JsonObjectRequest(Request.Method.GET,url,null,this,this);
         request.add(jsonObjectRequest);
@@ -163,12 +162,15 @@ public class triaje extends Fragment implements Response.Listener<JSONObject>,Re
     public void onResponse(JSONObject response) {
         progreso.hide();
 
+        //LLAMANDO A LA CLASE USUARIO CREADO
         Usuario miUsuario=new Usuario();
 
+        //LLAMANDO AL JSON DECLARADO EN EL PHP CON LA VARIABLE "usuario"
         JSONArray json=response.optJSONArray("usuario");
         JSONObject jsonObject=null;
 
         try {
+         //EXTRAENDO EL JSON DECLARADO EN EL PHP Y TRAENDO LOS RESULTADOS DE LOS CAMPOS DE LA TABLA A VISUALIZAR
             jsonObject=json.getJSONObject(0);
             miUsuario.setId(jsonObject.optString("cod_usuario"));
             miUsuario.setNombre(jsonObject.optString("nom_usuario"));
@@ -187,11 +189,6 @@ public class triaje extends Fragment implements Response.Listener<JSONObject>,Re
         getActivity().startActivity(int1);
 
     }
-
-
-
-
-
 
 
 

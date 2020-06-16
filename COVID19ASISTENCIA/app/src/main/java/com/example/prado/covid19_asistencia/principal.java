@@ -38,8 +38,6 @@ public class principal extends AppCompatActivity implements View.OnClickListener
 
 
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,14 +51,11 @@ public class principal extends AppCompatActivity implements View.OnClickListener
         edtUser = (EditText) findViewById(R.id.edtLoginPrincipal);
         edtPass = (EditText) findViewById(R.id.edtPassPrincipal);
 
-
         recuperarPreferencias();
-
 
 
         btt_iniciar.setOnClickListener(this);
         btnRegistrar.setOnClickListener(this);
-
 
 
 
@@ -74,20 +69,17 @@ public class principal extends AppCompatActivity implements View.OnClickListener
 
 
                 if (!usuario.isEmpty()&& !password.isEmpty()){
+
                   //  validarUsuario( "https://proyectocovid19.000webhostapp.com/ejemploBDRemota/validar_usuarioCovid.php");
                     validarUsuario( "http://192.168.2.2:8080/ejemploBDRemota/validar_usuarioCovid.php");
+
                 }else{
                     Toast.makeText(principal.this,"No se permiten campos vacios",Toast.LENGTH_SHORT).show();
                 }
             }
         });
 
-
-
-
     }
-
-
 
 
 
@@ -102,12 +94,11 @@ public class principal extends AppCompatActivity implements View.OnClickListener
                     Intent intent = new Intent(getApplicationContext(),paginainicio.class);
                     guardarPreferencias();
                     startActivity(intent);
-                    Toast.makeText(getApplicationContext()," BIENVENIDO! :  "+usuario,Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),"Bienvenido! : "+usuario,Toast.LENGTH_SHORT).show();
                     finish();
                 }else{
                     Toast.makeText(principal.this,"Correo o contraseña equivocado",Toast.LENGTH_SHORT).show();
                 }
-
             }
 
 
@@ -116,7 +107,6 @@ public class principal extends AppCompatActivity implements View.OnClickListener
             public void onErrorResponse(VolleyError error) {
 
                 Toast.makeText(principal.this, error.toString(),Toast.LENGTH_SHORT).show();
-
             }
         })
 

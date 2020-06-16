@@ -1,12 +1,17 @@
 package com.example.prado.covid19_asistencia;
 
+import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 
 /**
@@ -28,6 +33,14 @@ public class contactos extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
+
+
+    Button btnllamarSamu;
+    Button btnllamarEsSalud;
+
+
+
+
 
     public contactos() {
         // Required empty public constructor
@@ -64,8 +77,70 @@ public class contactos extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_contactos, container, false);
+        View vista = inflater.inflate(R.layout.fragment_contactos, container, false);
+        btnllamarSamu =(Button) vista.findViewById(R.id.btnLLAMARSamu);
+        btnllamarEsSalud =(Button) vista.findViewById(R.id.btnLLAMAREsSalud);
+
+
+
+
+        btnllamarSamu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(android.content.Intent.ACTION_DIAL,
+                        Uri.parse("tel:106"));
+                startActivity(i);
+            }
+        });
+
+
+
+        btnllamarEsSalud.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(android.content.Intent.ACTION_DIAL,
+                        Uri.parse("tel:117")); //
+                startActivity(i);
+            }
+        });
+
+
+
+
+
+
+        return vista;
+
+
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {

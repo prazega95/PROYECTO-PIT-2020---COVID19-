@@ -26,7 +26,7 @@
 
         android:fontFamily="@font/regular"
         android:gravity="center"
-        android:text="Selecciona los sintomas que has padecido recientemente:"
+        android:text="Selecciona los sintomas que padeces actualmente :"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -37,8 +37,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="48dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="12dp"
         android:text="Fiebre"
+        android:fontFamily="@font/light"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
@@ -99,16 +100,30 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/chksintoma5" />
 
+    <TextView
+        android:id="@+id/txtSeparacion"
+        android:layout_width="350dp"
+        android:layout_height="20dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:hint="_______________________________________________"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/chksintoma6" />
+
+
     <CheckBox
         android:id="@+id/chksintoma7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="48dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:fontFamily="@font/light"
-        android:text="Ninguna"
+        android:text="No tengo ningun sintoma"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/chksintoma6" />
+        app:layout_constraintTop_toBottomOf="@+id/txtSeparacion" />
 
 
     <EditText
@@ -117,30 +132,25 @@
         android:layout_width="300dp"
         android:layout_height="45dp"
 
-        android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
 
-        android:layout_marginTop="-30dp"
+        android:layout_marginTop="12dp"
         android:layout_weight="1"
+
         android:background="@drawable/input_field"
 
         android:fontFamily="@font/regular"
 
         android:hint="Correo Electronico:"
-
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/chksintoma7"
-        app:layout_constraintVertical_bias="0.167" />
-
+        app:layout_constraintTop_toBottomOf="@+id/chksintoma7" />
 
     <Button
         android:id="@+id/btnGrabarSint"
         android:layout_width="200dp"
         android:layout_height="47dp"
-        android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
@@ -150,6 +160,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtCorreo14" />
+        app:layout_constraintTop_toBottomOf="@+id/edtCorreo14"
+        app:layout_constraintVertical_bias="0.615" />
 
 </android.support.constraint.ConstraintLayout>

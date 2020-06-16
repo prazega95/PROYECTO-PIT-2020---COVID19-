@@ -28,7 +28,7 @@
         android:layout_height="31dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="72dp"
+        android:layout_marginTop="76dp"
         android:fontFamily="@font/regular"
         android:gravity="center"
 
@@ -100,7 +100,6 @@
         android:layout_height="35dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
 
         android:background="@drawable/button"
         android:fontFamily="@font/regular"
@@ -108,28 +107,11 @@
         android:text="SIGUIENTE2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textObtener4" />
+        app:layout_constraintTop_toBottomOf="@+id/textObtenerLongitud" />
+
 
     <TextView
-        android:id="@+id/textObtener2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textObtener1" />
-
-    <TextView
-        android:id="@+id/textObtener3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textObtener2" />
-
-    <TextView
-        android:id="@+id/textObtener1"
+        android:id="@+id/textObtenerDEPARTAMENTO"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -137,14 +119,55 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edtProfesion" />
 
+
     <TextView
-        android:id="@+id/textObtener4"
+        android:id="@+id/textObtenerPROVINCIA"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textObtener3" />
+        app:layout_constraintTop_toBottomOf="@+id/textObtenerDEPARTAMENTO" />
 
+    <TextView
+        android:id="@+id/textObtenerDISTRITO"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textObtenerPROVINCIA" />
+
+
+    <TextView
+        android:id="@+id/textObtenerDIRECCION"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textObtenerDISTRITO" />
+
+
+
+
+    <TextView
+        android:id="@+id/textObtenerLatitud"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textObtenerDIRECCION" />
+
+
+    <TextView
+        android:id="@+id/textObtenerLongitud"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textObtenerLatitud" />
 
 </android.support.constraint.ConstraintLayout>

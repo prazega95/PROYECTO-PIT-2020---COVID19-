@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+
+    <string-array name="ListaDepartamentos">
+
+        <item></item>
+        <item>Amazonas</item>
+        <item>Ancash</item>
+        <item>Apurimac</item>
+        <item>Arequipa</item>
+        <item>Ayacucho</item>
+        <item>Cajamarca</item>
+        <item>Callao</item>
+        <item>Cusco</item>
+        <item>Huancavelica</item>
+        <item>Huanuco</item>
+        <item>Ica</item>
+        <item>Junin</item>
+        <item>La Libertad</item>
+        <item>Lambayeque</item>
+        <item>Lima</item>
+        <item>Loreto</item>
+        <item>Madre De Dios</item>
+        <item>Moquegua</item>
+        <item>Pasco</item>
+        <item>Piura</item>
+        <item>Puno</item>
+        <item>San Martin</item>
+        <item>Tacna</item>
+        <item>Tumbes</item>
+        <item>Ucayali</item>
+
+    </string-array>
+
+
+
+    <string-array name="ListarTipoDocumento">
+
+        <item>DNI</item>
+        <item>RUC</item>
+        <item>PASAPORTE</item>
+
+    </string-array>
+
+
+
+
+</resources>

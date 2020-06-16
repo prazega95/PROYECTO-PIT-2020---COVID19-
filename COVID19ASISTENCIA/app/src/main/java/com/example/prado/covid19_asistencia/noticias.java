@@ -1,12 +1,31 @@
 package com.example.prado.covid19_asistencia;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+import com.example.prado.covid19_asistencia.Adaptador.NoticiasAdapter;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 
 /**
@@ -17,7 +36,7 @@ import android.view.ViewGroup;
  * Use the {@link noticias#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class noticias extends Fragment {
+public class noticias extends Fragment implements Response.Listener<JSONObject>,Response.ErrorListener {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -29,18 +48,28 @@ public class noticias extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
+
+
+    RecyclerView recyclerNoticias;
+    ArrayList<Noticia> listaNoticias;
+
+    ProgressDialog progress;
+
+    RequestQueue request;
+    JsonObjectRequest jsonObjectRequest;
+
+
+
+
+
+
     public noticias() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment noticias.
-     */
+
+
+
     // TODO: Rename and change types and number of parameters
     public static noticias newInstance(String param1, String param2) {
 
@@ -74,12 +103,99 @@ public class noticias extends Fragment {
         }
     }
 
+
+
+
+
+
+
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_noticias, container, false);
+        View vista=inflater.inflate(R.layout.fragment_noticias, container, false);
+
+
+        listaNoticias=new ArrayList<>();
+
+        recyclerNoticias= (RecyclerView) vista.findViewById(R.id.idRecycler);
+        recyclerNoticias.setLayoutManager(new LinearLayoutManager(this.getContext()));
+        recyclerNoticias.setHasFixedSize(true);
+
+        request= Volley.newRequestQueue(getContext());
+
+        cargarWebService();
+
+        return vista;
     }
+
+
+
+    private void cargarWebService() {
+
+        progress=new ProgressDialog(getContext());
+        progress.setMessage("Consultando...");
+        progress.show();
+
+        String ip=getString(R.string.ip);
+
+        String url=ip+"/ejemploBDRemota/ws_JSONListarNoticias.php";
+
+        jsonObjectRequest=new JsonObjectRequest(Request.Method.GET,url,null,this,this);
+        request.add(jsonObjectRequest);
+
+    }
+
+    @Override
+    public void onErrorResponse(VolleyError error) {
+        Toast.makeText(getContext(), "No se puede conectar "+error.toString(), Toast.LENGTH_LONG).show();
+        System.out.println();
+        Log.d("ERROR: ", error.toString());
+        progress.hide();
+    }
+
+    @Override
+    public void onResponse(JSONObject response) {
+        Noticia noticia=null;
+
+        JSONArray json=response.optJSONArray("noticias");
+
+        try {
+
+            for (int i=0;i<json.length();i++){
+                noticia=new Noticia();
+                JSONObject jsonObject=null;
+                jsonObject=json.getJSONObject(i);
+
+                noticia.setIdnoticia(jsonObject.optInt("idnoticia"));
+                noticia.setTitulo(jsonObject.optString("titulo_noticia"));
+                noticia.setDescripcion(jsonObject.optString("contenido_noticia"));
+
+                listaNoticias.add(noticia);
+            }
+            progress.hide();
+            NoticiasAdapter adapter=new NoticiasAdapter(listaNoticias);
+            recyclerNoticias.setAdapter(adapter);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+            Toast.makeText(getContext(), "No se ha podido establecer conexión con el servidor" +
+                    " "+response, Toast.LENGTH_LONG).show();
+            progress.hide();
+        }
+
+    }
+
+
+
+
+
+
+
+
+
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {

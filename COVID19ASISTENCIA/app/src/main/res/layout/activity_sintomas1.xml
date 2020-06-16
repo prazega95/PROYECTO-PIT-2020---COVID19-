@@ -7,6 +7,8 @@
     tools:context=".sintomas1">
 
 
+
+
     <TextView
         android:id="@+id/textIdUsuario1"
         android:layout_width="match_parent"
@@ -51,7 +53,7 @@
             android:layout_width="174dp"
             android:layout_height="35dp"
             android:layout_marginEnd="116dp"
-            android:layout_marginStart="-25dp"
+            android:layout_marginStart="-9dp"
             android:layout_marginTop="0dp"
             android:layout_weight="1"
             android:fontFamily="@font/light"
@@ -72,11 +74,11 @@
         android:layout_marginEnd="8dp"
 
         android:layout_marginStart="32dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="20dp"
         android:fontFamily="@font/regular"
         android:gravity="center"
         android:text="REGISTRA TU LOCALIDAD"
-        android:textSize="20dp"
+        android:textSize="25dp"
         app:layout_constraintEnd_toEndOf="parent"
 
         app:layout_constraintHorizontal_bias="0.04"
@@ -101,7 +103,7 @@
 
             android:layout_marginEnd="0dp"
             android:layout_marginStart="35dp"
-            android:layout_marginTop="0dp"
+            android:layout_marginTop="10dp"
 
             android:fontFamily="@font/regular"
             android:text="Departamento"
@@ -110,22 +112,19 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <EditText
-            android:id="@+id/edtDepartamento1"
+        <Spinner
+            android:id="@+id/spinnerDepart"
+            android:layout_width="120dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="9dp"
+            android:layout_marginRight="30dp"
 
-            android:layout_width="280dp"
-            android:layout_height="45dp"
-            android:layout_marginEnd="30dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="0dp"
             android:layout_weight="1"
-            android:background="@drawable/input_field"
+            android:maxLines="1"
+            android:spinnerMode="dialog"
 
-            android:fontFamily="@font/regular"
-
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:textStyle="bold" />
 
     </LinearLayout>
 
@@ -134,8 +133,9 @@
         android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="8dp"
         android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout1">
 
         <TextView
@@ -149,10 +149,7 @@
 
             android:fontFamily="@font/regular"
             android:text="Provincia"
-            android:textSize="15dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:textSize="15dp"/>
 
         <EditText
             android:id="@+id/edtProvincia2"
@@ -164,21 +161,18 @@
             android:layout_marginTop="0dp"
             android:layout_weight="1"
             android:background="@drawable/input_field"
-
-            android:fontFamily="@font/regular"
-
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:fontFamily="@font/regular"/>
     </LinearLayout>
+
 
 
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="8dp"
         android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
 
         <TextView
@@ -189,13 +183,10 @@
             android:layout_marginEnd="0dp"
             android:layout_marginStart="50dp"
             android:layout_marginTop="0dp"
-
             android:fontFamily="@font/regular"
             android:text="Distrito"
-            android:textSize="15dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:textSize="15dp"/>
+
 
         <EditText
             android:id="@+id/edtDistrito3"
@@ -207,38 +198,104 @@
             android:layout_marginTop="0dp"
             android:layout_weight="1"
             android:background="@drawable/input_field"
+            android:fontFamily="@font/regular" />
 
-            android:fontFamily="@font/regular"
-
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
     </LinearLayout>
 
 
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="385dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="24dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+
+        <Switch
+            android:id="@+id/onOffManualGps"
+            android:layout_width="wrap_content"
+            android:layout_height="23dp"
+            android:layout_marginLeft="50dp"
+            android:fontFamily="@font/light"
+            android:gravity="center"
+            android:text="Mi Direccion por GPS   "
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+
+        <TextView
+            android:id="@+id/txtGPS"
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="45dp"
+            android:fontFamily="@font/light"
+            android:gravity="center"
+            android:hint="GPS Desactivado" />
+
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/txtSeparacion"
+        android:layout_width="350dp"
+        android:layout_height="20dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:hint="_______________________________________________"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
+
+
+
+
+
+
+
+
     <EditText
-        android:id="@+id/edtDireccion4"
+        android:id="@+id/edtDireccionGPS"
 
         android:layout_width="350dp"
-        android:layout_height="45dp"
-
-        android:layout_marginBottom="8dp"
+        android:layout_height="63dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
 
-        android:layout_marginTop="-40dp"
+        android:layout_marginTop="16dp"
         android:layout_weight="1"
         android:background="@drawable/input_field"
-
         android:fontFamily="@font/regular"
-
-        android:hint="Direccion:"
-
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:hint="Direccion  Automatica:"
+        android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:layout_constraintVertical_bias="0.084" />
+        app:layout_constraintTop_toBottomOf="@+id/txtSeparacion" />
+
+
+    <EditText
+        android:id="@+id/edtDireccionManual"
+
+        android:layout_width="350dp"
+        android:layout_height="64dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+
+        android:layout_marginTop="16dp"
+        android:layout_weight="1"
+        android:background="@drawable/input_field"
+        android:fontFamily="@font/regular"
+        android:hint="Direccion Manual:"
+        android:textColor="#000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtSeparacion" />
+
 
 
     <Button
@@ -246,17 +303,51 @@
 
         android:layout_width="150dp"
         android:layout_height="35dp"
-        android:layout_marginBottom="72dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
 
+        android:layout_marginTop="20dp"
         android:background="@drawable/button"
         android:fontFamily="@font/regular"
         android:gravity="center"
         android:text="SIGUIENTE"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtDireccionManual" />
+
+
+
+
+
+    <TextView
+        android:id="@+id/txtLatitud"
+        android:layout_width="137dp"
+        android:layout_height="20dp"
+
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="40dp"
+        android:fontFamily="@font/regular"
+        android:gravity="center"
+        android:hint="Latitud:"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnSiguienteSint1" />
+
+
+    <TextView
+        android:id="@+id/txtLongitud"
+        android:layout_width="164dp"
+
+        android:layout_height="20dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="40dp"
+        android:fontFamily="@font/regular"
+        android:gravity="center"
+        android:hint="Longitud:"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/txtLatitud"
+        app:layout_constraintTop_toBottomOf="@+id/btnSiguienteSint1" />
 
 
 
