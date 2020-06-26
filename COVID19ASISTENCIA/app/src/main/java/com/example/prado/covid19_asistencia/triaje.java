@@ -5,13 +5,16 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import androidx.fragment.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -47,13 +50,19 @@ public class triaje extends Fragment implements Response.Listener<JSONObject>,Re
 
 
 
-
     private OnFragmentInteractionListener mListener;
 
 
-    /////////////declararas variales de los botones
+    /////////////declararas variales de los botones e imagen
     EditText campoDocumento;
+    ImageView img1;
     Button btn1;
+
+    //STRING PARA LA CONDICION SI EDITTEXT ESTA VACIA y quieres continuar
+    String DOCUMENTO;
+
+    //  TextView textid,textnombre;
+    TextView textid,textnombre;
 
     //BARRA DE PROGRESO
     ProgressDialog progreso;
@@ -61,6 +70,7 @@ public class triaje extends Fragment implements Response.Listener<JSONObject>,Re
     //METODOS JSON
     RequestQueue request;
     JsonObjectRequest jsonObjectRequest;
+
 
 
 
@@ -98,25 +108,31 @@ public class triaje extends Fragment implements Response.Listener<JSONObject>,Re
 
 
 
-
-
-
-
-
-
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-       // aqui es para llamar al activy main
+        // aqui es para llamar al activy main
         View vista = inflater.inflate(R.layout.fragment_triaje,container,false);
 
+        textid=(TextView) vista.findViewById(R.id.textid);
+        textid.setVisibility(View.INVISIBLE);
+        textnombre=(TextView) vista.findViewById(R.id.textnombre);
+        textnombre.setVisibility(View.INVISIBLE);
 
+        img1=(ImageView) vista.findViewById(R.id.imageTriajee);
         campoDocumento= (EditText) vista.findViewById(R.id.campoDocumento);
         btn1 =(Button) vista.findViewById(R.id.btnIniciarRegistro);
 
         request= Volley.newRequestQueue(getContext());
+
+
+
+        //llamando a la animacion
+        Animation anim;
+        anim = AnimationUtils.loadAnimation(getContext(),R.anim.alpha);
+        anim.reset();
+        img1.setAnimation(anim);
+
 
 
 
@@ -125,13 +141,25 @@ public class triaje extends Fragment implements Response.Listener<JSONObject>,Re
             @Override
             public void onClick(View v) {
 
-                cargarWebService();
+             //declarando variables para poder hacer la condicion de pasar al activity sgte si este campo no esta completado
+               DOCUMENTO=campoDocumento.getText().toString();
+
+                //Condicion para poder pasar al activity sgte si estos campos no estan completados o llenados
+                if (!DOCUMENTO.isEmpty()){
+
+/////////////////////si el text tiene datos escritos, procedera a cargar el webservis
+                    cargarWebService();
+
+                }else{
+                    //caso contrario mostrara un toast de alerta
+                    Toast.makeText(getContext(),"Completa el campo de Documento",Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
 
         return vista;
     }
-
 
 
 
@@ -144,17 +172,20 @@ public class triaje extends Fragment implements Response.Listener<JSONObject>,Re
         String ip=getString(R.string.ip);
 
         String url=ip+"/ejemploBDRemota/wsJSONConsultarUsuario.php?doc_usuario="
-                     +campoDocumento.getText().toString();
+                +campoDocumento.getText().toString();
 
         jsonObjectRequest=new JsonObjectRequest(Request.Method.GET,url,null,this,this);
         request.add(jsonObjectRequest);
+        //VolleySingleton.getIntanciaVolley(getContext()).addToRequestQueue(jsonObjectRequest);
     }
 
 
     @Override
     public void onErrorResponse(VolleyError error) {
+
         progreso.hide();
-        Toast.makeText(getContext(),"No se pudo Consultar "+error.toString(),Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getContext(),"No se pudo Consultar "+error.toString(),Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(),"Documento NO Registrado !",Toast.LENGTH_SHORT).show();
         Log.i("ERROR",error.toString());
     }
 
@@ -162,7 +193,9 @@ public class triaje extends Fragment implements Response.Listener<JSONObject>,Re
     public void onResponse(JSONObject response) {
         progreso.hide();
 
-        //LLAMANDO A LA CLASE USUARIO CREADO
+        //Toast.makeText(getContext(),"Mensaje:"+response,Toast.LENGTH_SHORT).show();
+
+         //LLAMANDO A LA CLASE USUARIO CREADO
         Usuario miUsuario=new Usuario();
 
         //LLAMANDO AL JSON DECLARADO EN EL PHP CON LA VARIABLE "usuario"
@@ -170,10 +203,18 @@ public class triaje extends Fragment implements Response.Listener<JSONObject>,Re
         JSONObject jsonObject=null;
 
         try {
-         //EXTRAENDO EL JSON DECLARADO EN EL PHP Y TRAENDO LOS RESULTADOS DE LOS CAMPOS DE LA TABLA A VISUALIZAR
+            //EXTRAENDO EL JSON DECLARADO EN EL PHP Y TRAENDO LOS RESULTADOS DE LOS CAMPOS DE LA TABLA A VISUALIZAR
             jsonObject=json.getJSONObject(0);
             miUsuario.setId(jsonObject.optString("cod_usuario"));
             miUsuario.setNombre(jsonObject.optString("nom_usuario"));
+
+
+            // SI ES CORRECTO ENVÍA LOS DATOS DEL DNI CONSULTADO AL ACTIVITYSINTOMAS 1 CON LA VARIABLE ID
+            // Y NOMBRE EN MODOD PUBLIC STATIC FINAL PREVIAMENTE DECLARADO EN SINTOMAS1
+            Intent int1 = new Intent(getActivity(), sintomas1.class);
+            int1.putExtra(sintomas1.ID,miUsuario.getId());
+            int1.putExtra(sintomas1.NOMBRE,miUsuario.getNombre());
+            getActivity().startActivity(int1);
 
 
         } catch (JSONException e) {
@@ -181,24 +222,13 @@ public class triaje extends Fragment implements Response.Listener<JSONObject>,Re
 
         }
 
-        // ENVIANDO LOS DATOS DEL DNI CONSULTADO AL ACTIVITYSINTOMAS 1 CON LA VARIABLE ID
-        // Y NOMBRE EN MODOD PUBLIC STATIC FINAL PREVIAMENTE DECLARADO EN SINTOMAS1
-        Intent int1 = new Intent(getActivity(), sintomas1.class);
-        int1.putExtra(sintomas1.ID,miUsuario.getId());
-        int1.putExtra(sintomas1.NOMBRE,miUsuario.getNombre());
-        getActivity().startActivity(int1);
+
+        textid.setText("ID :"+miUsuario.getId());
+        textnombre.setText("Profesion :"+miUsuario.getNombre());
+
+
 
     }
-
-
-
-
-
-
-
-
-
-
 
 
 

@@ -1,13 +1,18 @@
 package com.example.prado.covid19_asistencia;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 
 /**
@@ -29,6 +34,15 @@ public class chat extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
+
+    //declararas variales de los botones, imagen e textview
+    ImageView img1;
+    TextView tituloQuedate;
+    Button btnAbriMapa;
+
+
+
+
 
     public chat() {
         // Required empty public constructor
@@ -65,61 +79,38 @@ public class chat extends Fragment {
 
 
 
-
-
-
-
-
-
-
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
 
-
-        //declararas variales de los botones
-        Button btn1;
-
         // aqui es para llamar al activy main
         View view = inflater.inflate(R.layout.fragment_chat,container,false);
-        /*btn1 =(Button) view.findViewById(R.id.btnSiguienteDatosP);
+        img1=(ImageView) view.findViewById(R.id.imageView6);
+        tituloQuedate=(TextView) view.findViewById(R.id.textQuedateEnCasa1);
+        btnAbriMapa =(Button) view.findViewById(R.id.btnIniciarMapa);
+
+
+        //llamando a la animacion
+        Animation anim;
+        anim = AnimationUtils.loadAnimation(getContext(),R.anim.alpha);
+        anim.reset();
+        tituloQuedate.setAnimation(anim);
 
 
 
 
         //Clase intent para llamar al activity
-        btn1.setOnClickListener(new View.OnClickListener() {
+        btnAbriMapa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent int1 = new Intent(getActivity(), localizacion.class);
+                Intent int1 = new Intent(getActivity(), MapsActivity.class);
                 getActivity().startActivity(int1);
             }
-        });*/
-
-
+        });
 
         return view;
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

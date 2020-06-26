@@ -1,7 +1,7 @@
 package com.example.prado.covid19_asistencia;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -34,6 +34,14 @@ public class pantalla_registro_exitoso extends AppCompatActivity {
           });
         }
 
+
+    /*METODO DE REGRESAR POR EL BOTON DEL CELULAR MAS NO POR EL TEXTVIEW regresar al menu*/
+    @Override
+    public void onBackPressed()
+    {
+        Intent int1 = new Intent(pantalla_registro_exitoso.this,paginainicio.class);
+        startActivity(int1);
+    }
 
 
 }

@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".registrardatospersonales">
+
 
     <TextView
         android:id="@+id/txtDatosPersonales"
@@ -31,13 +32,25 @@
             android:layout_height="wrap_content"
             android:orientation="vertical" >
 
+            <TextView
+                android:id="@+id/editText7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:gravity="center"
+                android:text="Agrega tus nombre y apellidos__________________" />
+
             <EditText
                 android:id="@+id/edtNombre"
                 android:layout_width="match_parent"
                 android:layout_height="55sp"
                 android:layout_marginEnd="15dp"
                 android:layout_marginStart="15dp"
-                android:layout_marginTop="25dp"
+                android:layout_marginTop="15dp"
+
+                android:digits="abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ "
+                android:inputType="textCapCharacters"
+
                 android:background="@drawable/input_field"
                 android:fontFamily="@font/light"
                 android:hint="Nombres:"
@@ -50,68 +63,107 @@
                 android:layout_marginEnd="15dp"
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="30dp"
+
+                android:digits="abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ "
+                android:inputType="textCapCharacters"
+
                 android:background="@drawable/input_field"
                 android:fontFamily="@font/light"
                 android:hint="Apellidos"
                 android:maxLength="50"/>
 
-
-
+            <TextView
+                android:id="@+id/obtenerDocumento"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="15dp"
+                android:layout_marginStart="25dp"
+                android:hint="Documento" />
+            <TextView
+                android:id="@+id/editText6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:gravity="center"
+                android:text="Selecciona y agrega tu Nº de Documento__________" />
 
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
-                android:layout_marginTop="25dp">
+                android:layout_marginTop="15dp">
 
                 <Spinner
                     android:id="@+id/spinnerTipoDoc"
-                    android:layout_width="130dp"
-                    android:layout_height="40dp"
+                    android:layout_width="55dp"
+                    android:layout_height="50sp"
                     android:layout_gravity="center"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="5dp"
-
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="3dp"
+                    android:background="@drawable/stilospinner"
                     android:maxLines="1"
                     android:spinnerMode="dialog"
                     android:textStyle="bold" />
 
                 <EditText
                     android:id="@+id/edtDocumentos"
-                    android:layout_width="179dp"
+                    android:layout_width="143dp"
                     android:layout_height="55sp"
-                    android:layout_marginEnd="15dp"
                     android:layout_weight="1"
                     android:background="@drawable/input_field"
                     android:fontFamily="@font/light"
-                    android:hint="Digitar Documento:"
+                    android:hint="Nº DNI:"
                     android:inputType="number"
-                    android:maxLength="10" />
+                    android:maxLength="9"/>
+
+                <EditText
+                    android:id="@+id/edtDocumentosRUC"
+                    android:layout_width="179dp"
+                    android:layout_height="55sp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/input_field"
+                    android:fontFamily="@font/light"
+                    android:hint="Nº RUC:"
+                    android:inputType="number"
+                    android:maxLength="12"/>
+
             </LinearLayout>
 
+            <TextView
+                android:id="@+id/editText5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:gravity="center"
+                android:text="Agrega tu Nº Telefónico__________________________" />
 
 
-            <EditText
+            <com.santalu.maskedittext.MaskEditText
                 android:id="@+id/edtTelefono"
                 android:layout_width="match_parent"
                 android:layout_height="55sp"
+                android:hint="Nº Celular"
                 android:layout_marginEnd="15dp"
                 android:layout_marginStart="15dp"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="15dp"
                 android:background="@drawable/input_field"
                 android:fontFamily="@font/light"
-                android:hint="Celular:"
-                android:inputType="number"
-                android:maxLength="9" />
+                android:inputType="phone"
+                app:met_mask="+51(###)-###-###" />
+
+
+
+
 
             <TextView
                 android:id="@+id/editText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="40dp"
                 android:gravity="center"
-                android:text="______________________________________________" />
+                android:text="Agrega tu Usuario_______________________________" />
 
             <EditText
                 android:id="@+id/edtUsuario"
@@ -119,11 +171,15 @@
                 android:layout_height="55sp"
                 android:layout_marginEnd="50dp"
                 android:layout_marginStart="50dp"
-                android:layout_marginTop="25dp"
+                android:layout_marginTop="15dp"
+
+                android:digits="abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ "
+                android:inputType="textCapCharacters"
+
                 android:background="@drawable/input_field"
                 android:fontFamily="@font/light"
                 android:hint="Usuario:"
-                android:maxLength="50"/>
+                android:maxLength="50" />
 
             <EditText
                 android:id="@+id/edtClave"
@@ -136,23 +192,49 @@
                 android:fontFamily="@font/light"
                 android:hint="Contraseña:"
                 android:inputType="textPassword"
-                android:maxLength="20"/>
+                android:maxLength="20" />
+
+            <CheckBox
+                android:id="@+id/chkmostrarClave"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:fontFamily="@font/light"
+                android:layout_marginStart="50dp"
+                android:layout_marginEnd="50dp"
+                android:layout_marginTop="10dp"
+                android:text="Mostrar Contraseña" />
+
+
+            <TextView
+                android:id="@+id/editText2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:gravity="center"
+                android:text="________________________________________________" />
+
 
             <Button
                 android:id="@+id/btnRegistrarDatosP"
                 android:layout_width="match_parent"
                 android:layout_height="50sp"
                 android:layout_marginBottom="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="50dp"
+                android:layout_marginEnd="80dp"
+                android:layout_marginStart="80dp"
+                android:layout_marginTop="30dp"
                 android:background="@drawable/button"
                 android:fontFamily="@font/light"
                 android:text="Registrarme"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"/>
+
 
         </LinearLayout>
     </ScrollView>
 
 
-</android.support.constraint.ConstraintLayout>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

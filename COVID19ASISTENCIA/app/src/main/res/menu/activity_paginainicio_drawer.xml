@@ -8,31 +8,39 @@
         <item
             android:id="@+id/nav_inicio"
             android:icon="@drawable/iconoinicio"
+            android:background="?android:attr/selectableItemBackground"
             android:title="Inicio" />
         <item
             android:id="@+id/nav_noticias"
             android:icon="@drawable/icononoticias"
+            android:background="?android:attr/selectableItemBackground"
             android:title="Noticias y alertas" />
         <item
             android:id="@+id/nav_casos"
             android:icon="@drawable/iconocasos"
-            android:title="Cifras Totales" />
+            android:background="?android:attr/selectableItemBackground"
+            android:title="Cifras Generales" />
         <item
             android:id="@+id/nav_triaje"
             android:icon="@drawable/iconotriaje"
+            android:background="?android:attr/selectableItemBackground"
             android:title="Triaje" />
+        <item
+            android:id="@+id/nav_chat"
+            android:icon="@drawable/iconodepartamentos"
+            android:background="?android:attr/selectableItemBackground"
+            android:title="Reporte Geográfico" />
 
     </group>
+
+
 
     <item android:title="Communicate">
         <menu>
             <item
-                android:id="@+id/nav_chat"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Mapa" />
-            <item
                 android:id="@+id/nav_contactos"
-                android:icon="@drawable/ic_menu_send"
+                android:icon="@drawable/ic_menu_share"
+                android:background="?android:attr/selectableItemBackground"
                 android:title="Contactos" />
         </menu>
     </item>

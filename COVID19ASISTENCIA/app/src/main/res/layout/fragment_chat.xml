@@ -4,8 +4,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/fondo"
+    android:background="#491111"
     tools:context=".chat">
+
+    <TextView
+        android:id="@+id/textQuedateEnCasa1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="-270dp"
+        android:fontFamily="@font/regular"
+        android:text="#QuédateEnCasa"
+        android:textColor="#FFFFFF"
+        android:textSize="15sp" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="234dp"
+        android:layout_height="392dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="-100dp"
+        android:src="@drawable/iconomarcador" />
 
 
     <TextView
@@ -13,28 +32,24 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="-230dp"
+        android:layout_marginTop="100dp"
         android:fontFamily="@font/regular"
-        android:text="MAPA GEOGRAFICO"
+        android:text="REPORTE GEOGRÁFICO"
+        android:textColor="#FFFFFF"
         android:textSize="24sp" />
 
-
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btnIniciarMapa"
         android:layout_width="144dp"
         android:layout_height="50dp"
         android:layout_gravity="center"
         android:layout_marginTop="230dp"
+        android:textColor="@drawable/efecto_clic_button"
         android:background="@drawable/button"
         android:fontFamily="@font/regular"
-        android:text="GPS" />
+        android:text="INICIAR" />
 
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="match_parent"
-        android:layout_height="359dp"
-        android:layout_marginTop="90dp"
-        android:src="@drawable/descarga" />
+
 
 
 </FrameLayout>

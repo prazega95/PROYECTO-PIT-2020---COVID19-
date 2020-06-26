@@ -1,16 +1,16 @@
 package com.example.prado.covid19_asistencia;
 
-import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.Fragment;
+import androidx.core.app.ActivityCompat;
+import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 
 
@@ -78,9 +78,16 @@ public class contactos extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View vista = inflater.inflate(R.layout.fragment_contactos, container, false);
+
         btnllamarSamu =(Button) vista.findViewById(R.id.btnLLAMARSamu);
         btnllamarEsSalud =(Button) vista.findViewById(R.id.btnLLAMAREsSalud);
 
+        //llamando a la animacion
+        Animation anim;
+        anim = AnimationUtils.loadAnimation(getContext(),R.anim.alpha);
+        anim.reset();
+        btnllamarSamu.setAnimation(anim);
+        btnllamarEsSalud.setAnimation(anim);
 
 
 

@@ -1,22 +1,33 @@
 package com.example.prado.covid19_asistencia;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class sintomas2 extends AppCompatActivity {
 
 
-    EditText edt5,edt6;
+    TextView edt5,edt6;
     Button btnNext2;
 
     TextView textID, tx1,tx2,tx3,tx4,tx5,tx6;
 
+    Spinner opcionesCantidadF,opcionesTipoProf;
+    ArrayAdapter<String> opcCantidadF,opcTipoProf;
+    int posicion;
+    String CantidadFamiliar[]={"","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15"}; //CANTIDAD FAMILIAR EN NUMEROS
+    String TipoProfesion[]={"","Actor","Bombero","Dentista","Enfermero/a","Arquitecto/a","Médico/a","Medico","Enfermero/a","Contador","Cajero/a",
+                            "Diseñador","Economista","Ingeniero/a","geólogo","Periodista","Abogado/a","Minero/a","Moquegua","Farmaceútico","Arqueólogo","Policía","Político",
+                            "Profesor/a (Universidad)","Programador","Psiquiatra","Psicólogo/a","Recepcionista","Marinero/a","Secretario","Cantante",
+                            "deportista","Cirujano","Taxista","Telefonista","Veterinario","Informatico/a"}; //TIPO DE PROFESION
 
     String NUMEROFAMILIAR,
             PROFESION;
@@ -28,9 +39,49 @@ public class sintomas2 extends AppCompatActivity {
         setContentView(R.layout.activity_sintomas2);
 
 
-        edt5 = (EditText) findViewById(R.id.edtCantFami);
-        edt6 = (EditText) findViewById(R.id.edtProfesion);
+        edt5 = (TextView) findViewById(R.id.edtCantFami);
+        edt6 = (TextView) findViewById(R.id.edtProfesion);
+
+        opcionesCantidadF = (Spinner) findViewById(R.id.spinnerCantidadFamiliar);
+        opcionesTipoProf = (Spinner) findViewById(R.id.spinnerTipoProfesion);
         btnNext2 =(Button) findViewById(R.id.btnSiguienteSint2);
+
+        /*adaptador que trae el arraylist de todos los campos agregados a las variables CantidadFamiliar y TipoProfesion y mandondo
+        * a la variable opcCantidadF y opcTipoProf*/
+        opcCantidadF=new ArrayAdapter<String>(this,android.R.layout.simple_spinner_dropdown_item,CantidadFamiliar);
+        opcTipoProf=new ArrayAdapter<String>(this,android.R.layout.simple_spinner_dropdown_item,TipoProfesion);
+        opcionesCantidadF.setAdapter(opcCantidadF);
+        opcionesTipoProf.setAdapter(opcTipoProf);
+
+        edt5.setVisibility(View.INVISIBLE);
+        edt6.setVisibility(View.INVISIBLE);
+
+
+         /*esto es para que el textview extraiga los datos de los combobox o spinner segun su seleccion*/
+        opcionesCantidadF.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapter, View v,int position, long id) {
+                // Reflejando o seteando el textview lo seleccionado
+                edt5.setText(opcionesCantidadF.getSelectedItem().toString());
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> arg0) {
+            }
+        });
+
+        opcionesTipoProf.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapter, View v,int position, long id) {
+                // Reflejando o seteando el textview lo seleccionado
+                edt6.setText(opcionesTipoProf.getSelectedItem().toString());
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> arg0) {
+            }
+        });
+
+
+
 
 
         ////////LISTA DE TEXTVIEW ARRASTRANDO LOS DATOS DE OTROS ACTIVITYS
@@ -108,6 +159,7 @@ public class sintomas2 extends AppCompatActivity {
             NUMEROFAMILIAR=edt5.getText().toString();
             PROFESION=edt6.getText().toString();
 
+
               //Condicion para poder pasar al activity sgte si estos campos no estan completados o llenados
               if (!NUMEROFAMILIAR.isEmpty()&&
                        !PROFESION.isEmpty()){
@@ -136,6 +188,7 @@ public class sintomas2 extends AppCompatActivity {
                 else{
                 Toast.makeText(sintomas2.this,"Complete Todos los Campos",Toast.LENGTH_SHORT).show();
               }
+
             }
           });
 

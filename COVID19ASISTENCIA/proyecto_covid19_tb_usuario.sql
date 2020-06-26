@@ -1,88 +1,59 @@
-CREATE SCHEMA IF NOT EXISTS `proyecto_covid19` DEFAULT CHARACTER SET utf8 ;
-/*use proyecto_covid19
+-- MySQL dump 10.13  Distrib 5.7.12, for Win64 (x86_64)
+--
+-- Host: 127.0.0.1    Database: proyecto_covid19
+-- ------------------------------------------------------
+-- Server version	5.5.5-10.1.19-MariaDB
 
-/*drop table tb_administrador*/
-CREATE TABLE tb_administrador (
-  idAdmin int(2) NOT NULL AUTO_INCREMENT,
-  nomape_admin varchar(20) DEFAULT NULL,
-  fono_admin varchar(9) DEFAULT NULL,
-  usuario_admin varchar(20) DEFAULT NULL,
-  contra_admin varchar(20) DEFAULT NULL,
-  PRIMARY KEY (idAdmin)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
-/*TRUNCATE tb_administrador */
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
+--
+-- Table structure for table `tb_usuario`
+--
 
-/*drop table tb_usuario*/
+DROP TABLE IF EXISTS `tb_usuario`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tb_usuario` (
   `cod_usuario` int(2) NOT NULL AUTO_INCREMENT,
-  `nom_usuario` varchar(40) DEFAULT NULL,
-  `ape_usuario` varchar(60) DEFAULT NULL,
-  `TipoDoc_usuario` varchar(10) DEFAULT NULL,
-  `doc_usuario` varchar(10) DEFAULT NULL,
-  `tel_usuario` varchar(9) DEFAULT NULL,
-  `login_usuario` varchar(20) DEFAULT NULL,
-  `pass_usuario` varchar(20) DEFAULT NULL,
+  `nom_usuario` varchar(50) NOT NULL,
+  `ape_usuario` varchar(50) NOT NULL,
+  `doc_usuario` varchar(15) NOT NULL,
+  `tel_usuario` varchar(9) NOT NULL,
+  `dep_usuario` varchar(45) NOT NULL,
+  `prov_usuario` varchar(45) NOT NULL,
+  `dist_usuario` varchar(45) NOT NULL,
+  `direcc_usuario` varchar(45) NOT NULL,
+  `login_usuario` varchar(45) NOT NULL,
+  `pass_usuario` varchar(45) NOT NULL,
   PRIMARY KEY (`cod_usuario`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
-/*TRUNCATE tb_usuario */
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
+--
+-- Dumping data for table `tb_usuario`
+--
 
-/*drop table tb_sintomas*/
-CREATE TABLE `tb_sintomas` (
-  `cod_sintomas` int(2) NOT NULL AUTO_INCREMENT,
-  `Departamento` varchar(80) DEFAULT NULL,
-  `Provincia` varchar(80) DEFAULT NULL,
-  `Distrito` varchar(80) DEFAULT NULL,
-  `Direccion` varchar(255) DEFAULT NULL,
-  `Latitud` varchar(255) DEFAULT NULL,
-  `Longitud` varchar(255) DEFAULT NULL,
-  `NumeroFamiliar` varchar(45) DEFAULT NULL,
-  `Profesion` varchar(45) DEFAULT NULL,
-  `PrimerSintoma` varchar(45) DEFAULT NULL,
-  `SegundoSintoma` varchar(45) DEFAULT NULL,
-  `TercerSintoma` varchar(45) DEFAULT NULL,
-  `CuartoSintoma` varchar(45) DEFAULT NULL,
-  `QuintoSintoma` varchar(45) DEFAULT NULL,
-  `SextoSintoma` varchar(45) DEFAULT NULL,
-  `Ninguna` varchar(45) DEFAULT NULL,
-  `Email` varchar(45) DEFAULT NULL,
-  `Condicion` varchar(45) DEFAULT NULL,
-  `Resultado` varchar(45) DEFAULT NULL,
-  `cod_usuario` int(2) DEFAULT NULL,
-  PRIMARY KEY (`cod_sintomas`),
-  KEY `fk_sintomas_usuario` (`cod_usuario`),
-  CONSTRAINT `fk_sintomas_usuario` FOREIGN KEY (`cod_usuario`) REFERENCES `tb_usuario` (`cod_usuario`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
-/*TRUNCATE tb_sintomas */
+LOCK TABLES `tb_usuario` WRITE;
+/*!40000 ALTER TABLE `tb_usuario` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tb_usuario` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
-
-
-
-/*drop table tb_noticias*/
-CREATE TABLE tb_noticias (
-  idnoticia int(2) NOT NULL AUTO_INCREMENT,
-  titulo_noticia BLOB   DEFAULT NULL,
-  contenido_noticia BLOB   DEFAULT NULL,
-  PRIMARY KEY (idnoticia)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
-/*TRUNCATE tb_noticias */
-
-
-
-/*PROCEDURE PARA FILTRAR CIFRAS POR DISTRITO*/
-delimiter $$
-create procedure sp_cifras(in pDepartamento varchar(200))
-begin
-select Distinct
-	Departamento,
-    (select count(*) from tb_sintomas where Departamento=pDepartamento and Resultado="Confirmado") as confirmados,
-    (select count(*) from tb_sintomas where Departamento=pDepartamento and Resultado="Recuperado") as recuperados,
-    (select count(*) from tb_sintomas where Departamento=pDepartamento and Resultado="Fallecido") as fallecidos,
-    (select count(*) from tb_sintomas where Departamento=pDepartamento and Resultado="Hospitalizado") as hospitalizados
-from tb_sintomas 
-where 
-	Departamento=pDepartamento;
-end
-$$
+-- Dump completed on 2020-05-12 10:49:17

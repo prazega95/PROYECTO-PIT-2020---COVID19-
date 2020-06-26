@@ -8,7 +8,7 @@ public class Usuario {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(String  id) {
         this.id = id;
     }
 
@@ -19,4 +19,6 @@ public class Usuario {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+
+
 }

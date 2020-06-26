@@ -1,11 +1,10 @@
 package com.example.prado.covid19_asistencia;
 
-import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -22,9 +21,14 @@ import com.android.volley.toolbox.Volley;
 
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.regex.Pattern;
+
 public class sintomas3 extends AppCompatActivity implements Response.Listener<JSONObject>,Response.ErrorListener{
 
     EditText edt14;
+    TextView extraerFecha;
     TextView textIDx3;
 
     CheckBox chk1,
@@ -72,6 +76,9 @@ public class sintomas3 extends AppCompatActivity implements Response.Listener<JS
     RequestQueue request;
     JsonObjectRequest jsonObjectRequest;
 
+    //variable para el formato de dia,mes,año
+    Integer yy,mm,dd;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,9 +97,25 @@ public class sintomas3 extends AppCompatActivity implements Response.Listener<JS
 
         edt14 = (EditText) findViewById(R.id.edtCorreo14);
 
+        extraerFecha = (TextView) findViewById(R.id.textFecha);
+        extraerFecha.setVisibility(View.INVISIBLE);
+        /*EXTRAENDO DIA, MES, AÑO*/
+        final Calendar c = Calendar.getInstance();
+        yy = c.get(Calendar.YEAR);
+        mm = c.get(Calendar.MONTH);
+        dd = c.get(Calendar.DAY_OF_MONTH);
+        // mandando lo extraido al textview extraerFecha
+        extraerFecha.setText(new StringBuilder()
+           // Month is 0 based, just add 1
+           .append(dd).append("").append("-").append(mm + 1).append("-")
+           .append(yy));
+
+
+
         btnGrabarSint = (Button) findViewById(R.id.btnGrabarSint);
 
         request = Volley.newRequestQueue(this);
+
 
 
         //RECIBIENDO PARAMETROS ID DEL SEGUNDO ACTIVITY, RECORDAR QUE EL SEGUNDO RECIBIO ESTOS PARAMETROS DEL PRIMERO
@@ -125,18 +148,30 @@ public class sintomas3 extends AppCompatActivity implements Response.Listener<JS
                 //declarando variables para poder hacer la condicion de pasar al activity sgte si estos campos no estan completados
                 EMAIL=edt14.getText().toString();
 
-              //Condicion para poder pasar al activity sgte si estos campos no estan completados o llenados
-              if (!EMAIL.isEmpty()){
+                /*Extableciendo formato para correo*/
+                final String compruebaemail = edt14.getEditableText().toString().trim();
+                final String regex = "^[a-z0-9]+([.][a-z0-9]+)*[@]+[a-z0-9]+[.]+[a-z]{3,4}$";
 
-                // Pasar al activity pantalla registro y cargando el web servis
-                 Intent int1 = new Intent(sintomas3.this,pantalla_registro_exitoso.class);
-                 cargarWebServis();
-                 Toast.makeText(sintomas3.this, "Triaje Registrado !", Toast.LENGTH_SHORT).show();
-                  startActivity(int1);
-               }
-                 else{
+
+
+                //Condicion para poder pasar al activity sgte si estos campos no estan completados o llenados
+                if (!EMAIL.isEmpty()){
+
+                }
+                else{
                  Toast.makeText(sintomas3.this,"Agrege su Email",Toast.LENGTH_SHORT).show();
-               }
+                }
+                if (!compruebaemail.matches(regex)){
+
+                    Toast.makeText(sintomas3.this, "Utilize el formato adecuado de correo", Toast.LENGTH_LONG).show();
+                }
+                else{
+                    // Pasar al activity pantalla registro y cargando el web servis
+                    Intent int1 = new Intent(sintomas3.this,pantalla_registro_exitoso.class);
+                    cargarWebServis();
+                    Toast.makeText(sintomas3.this, "Triaje Registrado !", Toast.LENGTH_SHORT).show();
+                    startActivity(int1);
+                }
             }
      });
 
@@ -272,8 +307,9 @@ public class sintomas3 extends AppCompatActivity implements Response.Listener<JS
 
 
             ///////////  ENVIANDO AL PHP CON LOS DATOS OBTENIDOS
-                String ip=getString(R.string.ip);
-                String url=ip+="/ejemploBDRemota/wsJSONRegistroSintomasCovid.php?Departamento="+grab1+
+            String ip=getString(R.string.ip);
+
+            String url=ip+="/ejemploBDRemota/wsJSONRegistroSintomasCovid.php?Departamento="+grab1+
                                                                                "&Provincia="+grab2+
                                                                                "&Distrito="+grab3+
                                                                                "&Direccion="+grab4+
@@ -289,6 +325,7 @@ public class sintomas3 extends AppCompatActivity implements Response.Listener<JS
                                                                                "&SextoSintoma="+grab12+
                                                                                "&Ninguna="+grab13+
                                                                                "&Email="+grab14+
+                                                                               "&Fecha="+extraerFecha.getText().toString()+
                                                                                "&Condicion="+condicion.toString()+
                                                                                "&cod_usuario="+grab15;
 
@@ -304,6 +341,7 @@ public class sintomas3 extends AppCompatActivity implements Response.Listener<JS
             @Override
             public void onResponse(JSONObject response) {
                 progreso.hide();
+
             }
 
             @Override
@@ -311,6 +349,7 @@ public class sintomas3 extends AppCompatActivity implements Response.Listener<JS
                 progreso.hide();
 
             }
+
 
 
 

@@ -3,12 +3,15 @@ package com.example.prado.covid19_asistencia;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -30,13 +33,14 @@ public class principal extends AppCompatActivity implements View.OnClickListener
 
     TextView btnRegistrar;
     Button btt_iniciar;
-   /* ImageView img1;*/
+    ImageView img1;
 
 
     EditText edtUser,edtPass;
     String usuario, password;
 
-
+    CheckBox mostrarClave;
+    private boolean esVisible;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,9 +48,11 @@ public class principal extends AppCompatActivity implements View.OnClickListener
         setContentView(R.layout.activity_principal);
 
 
-       /* img1=(ImageView) findViewById(R.id.imgCovid19);*/
+        img1=(ImageView) findViewById(R.id.imgCovid19);
         btt_iniciar=(Button) findViewById(R.id.btnINICIAR);
         btnRegistrar= findViewById(R.id.textRegistrarme);
+
+        mostrarClave = (CheckBox)findViewById(R.id.chkmostrarClave);
 
         edtUser = (EditText) findViewById(R.id.edtLoginPrincipal);
         edtPass = (EditText) findViewById(R.id.edtPassPrincipal);
@@ -56,6 +62,37 @@ public class principal extends AppCompatActivity implements View.OnClickListener
 
         btt_iniciar.setOnClickListener(this);
         btnRegistrar.setOnClickListener(this);
+
+        //llamando a la animacion
+        Animation anim;
+        anim = AnimationUtils.loadAnimation(this,R.anim.alpha);
+        anim.reset();
+        img1.setAnimation(anim);
+
+
+///////////condicionales para el checkbox segun su marcacion mostrar la contraseña escrito o no
+        mostrarClave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if(!esVisible) {
+                    edtPass.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                    esVisible = true;
+                }
+                else {
+                    edtPass.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                    esVisible = false;
+                }
+            }
+        });
+
+
+
+
+
+
+
+
 
 
 
@@ -70,14 +107,20 @@ public class principal extends AppCompatActivity implements View.OnClickListener
 
                 if (!usuario.isEmpty()&& !password.isEmpty()){
 
-                  //  validarUsuario( "https://proyectocovid19.000webhostapp.com/ejemploBDRemota/validar_usuarioCovid.php");
-                    validarUsuario( "http://192.168.2.2:8080/ejemploBDRemota/validar_usuarioCovid.php");
+                    validarUsuario( "https://proyectocovid19.000webhostapp.com/ejemploBDRemota/validar_usuarioCovid.php");
+                  //  validarUsuario( "http://192.168.2.2:8080/ejemploBDRemota/validar_usuarioCovid.php");
 
                 }else{
                     Toast.makeText(principal.this,"No se permiten campos vacios",Toast.LENGTH_SHORT).show();
                 }
             }
         });
+
+
+
+
+
+
 
     }
 

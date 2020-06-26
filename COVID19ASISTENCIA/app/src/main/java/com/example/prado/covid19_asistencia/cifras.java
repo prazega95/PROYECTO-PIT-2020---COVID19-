@@ -4,15 +4,16 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import androidx.fragment.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -53,7 +54,8 @@ public class cifras extends Fragment implements Response.Listener<JSONObject>,Re
 
 
    ///////////////////////////////////////////////////////////////////////////////AGREGANDO LOS TEXTVIEW DE LAS CIFRAS
-    TextView cantConfirmados,
+    TextView titulo,
+             cantConfirmados,
              cantHospitalizados,
              cantMuertos,
              cantRecuperados ;
@@ -67,7 +69,8 @@ public class cifras extends Fragment implements Response.Listener<JSONObject>,Re
 
 
 
-
+    /*MARCANDO LA POSICION DEL ARRAY*/
+    int posicion;
 
 
 
@@ -116,7 +119,7 @@ public class cifras extends Fragment implements Response.Listener<JSONObject>,Re
 
         View vista = inflater.inflate(R.layout.fragment_cifras, container, false);
 
-
+        titulo = (TextView) vista.findViewById(R.id.cifrasgenerales);
         cantConfirmados = (TextView) vista.findViewById(R.id.text_confirmados);
         cantHospitalizados = (TextView) vista.findViewById(R.id.text_hospitalizados);
         cantMuertos = (TextView) vista.findViewById(R.id.text_muertes);
@@ -127,8 +130,14 @@ public class cifras extends Fragment implements Response.Listener<JSONObject>,Re
 
 
         request= Volley.newRequestQueue(getContext());
-        contadorGeneral();
+       /* contadorGeneral();*/
 
+
+        //llamando a la animacion
+        Animation anim;
+        anim = AnimationUtils.loadAnimation(getContext(),R.anim.alpha);
+        anim.reset();
+        titulo.setAnimation(anim);
 
 
 
@@ -158,11 +167,11 @@ public class cifras extends Fragment implements Response.Listener<JSONObject>,Re
         ////////////////////////////////////////////////// Colocando el web service contarXDepartamento al spinner opcionesProf
         opcionesLista.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long l) {
+            public void onItemSelected(AdapterView<?> parent, View v, int position, long l) {
 
-                    contarXDepartamento();
-                    Toast.makeText(parent.getContext(),"Cifras en: "+parent.getItemAtPosition(position).toString(),
-                            Toast.LENGTH_LONG).show();
+               contarXDepartamento();
+               Toast.makeText(parent.getContext(),"Cifras en: "+parent.getItemAtPosition(position).toString(), Toast.LENGTH_LONG).show();
+
             }
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
@@ -197,9 +206,9 @@ public class cifras extends Fragment implements Response.Listener<JSONObject>,Re
 
     private void contarXDepartamento() {
 
-       /* progreso=new ProgressDialog(getContext());
+        progreso=new ProgressDialog(getContext());
         progreso.setMessage("Consultando...");
-        progreso.show();*/
+        progreso.show();
 
 
         String ip=getString(R.string.ip);

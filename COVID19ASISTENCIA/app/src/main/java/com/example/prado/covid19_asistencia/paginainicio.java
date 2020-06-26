@@ -5,15 +5,18 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.design.widget.NavigationView;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import androidx.fragment.app.Fragment;
+import com.google.android.material.navigation.NavigationView;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
 
 
 public class paginainicio extends AppCompatActivity
@@ -30,6 +33,9 @@ public class paginainicio extends AppCompatActivity
            {
 
 
+       /*LLAMANDO AL IMAGEN PORTADA INICIO*/
+       ImageView img1;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,9 +45,11 @@ public class paginainicio extends AppCompatActivity
         setSupportActionBar(toolbar);
 
 
-
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        img1 = (ImageView) findViewById(R.id.imagenPortadaInicio);
+
+
+
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
@@ -49,6 +57,16 @@ public class paginainicio extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+
+
+
+        //llamando a la animacion
+        Animation anim;
+        anim = AnimationUtils.loadAnimation(this,R.anim.alpha);
+        anim.reset();
+        img1.setAnimation(anim);
+
 
 
     }
@@ -130,16 +148,8 @@ public class paginainicio extends AppCompatActivity
 
 
 
-
-
         Fragment fragment = null;
         boolean fragmentoSeleccionado = false;
-
-
-
-
-
-
 
 
 

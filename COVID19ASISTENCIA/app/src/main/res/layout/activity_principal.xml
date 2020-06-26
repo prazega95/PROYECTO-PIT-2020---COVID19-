@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -76,6 +76,18 @@
         app:layout_constraintTop_toBottomOf="@+id/edtLoginPrincipal" />
 
 
+    <CheckBox
+        android:id="@+id/chkmostrarClave"
+        android:layout_width="342dp"
+        android:layout_height="23dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/light"
+        android:text="Mostrar Contraseña"
+        android:layout_marginStart="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtPassPrincipal" />
+
     <Button
 
         android:id="@+id/btnINICIAR"
@@ -83,15 +95,16 @@
         android:layout_height="40dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="20dp"
+
         android:background="@drawable/button"
         android:text="INICIAR"
         android:textAllCaps="false"
-        android:textColor="@color/white"
+        android:textColor="@drawable/efecto_clic_button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.15"
+        app:layout_constraintHorizontal_bias="0.207"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtPassPrincipal" />
+        app:layout_constraintTop_toBottomOf="@+id/chkmostrarClave" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -111,14 +124,15 @@
 
         <TextView
             android:id="@+id/textRegistrarme"
-            android:layout_width="10dp"
+            android:layout_width="12dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
-
+            android:background="?android:attr/selectableItemBackground"
             android:layout_weight="1"
             android:fontFamily="@font/bold"
             android:text="Registrarme"
             android:textColor="@color/red"
+            android:textSize="15sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -128,4 +142,4 @@
     </LinearLayout>
 
 
-</android.support.constraint.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

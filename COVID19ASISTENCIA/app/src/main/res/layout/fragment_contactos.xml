@@ -34,7 +34,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="43dp"
-        android:layout_marginTop="270dp"
+        android:layout_marginTop="320dp"
         android:orientation="horizontal">
 
         <ImageView
@@ -52,6 +52,7 @@
             android:layout_gravity="center"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="60dp"
+            android:textColor="@drawable/efecto_clic_button"
             android:background="@drawable/button"
             android:fontFamily="@font/regular"
             android:text="Marcar" />
@@ -62,7 +63,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:layout_marginTop="320dp"
+        android:layout_marginTop="360dp"
         android:orientation="horizontal">
 
         <ImageView
@@ -80,6 +81,7 @@
             android:layout_gravity="center"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="60dp"
+            android:textColor="@drawable/efecto_clic_button"
             android:background="@drawable/button"
             android:fontFamily="@font/regular"
             android:text="Marcar" />

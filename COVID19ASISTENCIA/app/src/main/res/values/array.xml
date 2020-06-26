@@ -5,7 +5,7 @@
 
     <string-array name="ListaDepartamentos">
 
-        <item></item>
+        <item>Lima</item>
         <item>Amazonas</item>
         <item>Ancash</item>
         <item>Apurimac</item>
@@ -40,7 +40,6 @@
 
         <item>DNI</item>
         <item>RUC</item>
-        <item>PASAPORTE</item>
 
     </string-array>
 
