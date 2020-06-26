@@ -1,8 +1,8 @@
 <?php
 $hostname_localhost ="localhost";
-$database_localhost ="id13648985_proyectocovid19";
-$username_localhost ="id13648985_covid19";
-$password_localhost ="Prado123456789!";
+$database_localhost ="proyecto_covid19";
+$username_localhost ="root";
+$password_localhost ="";
 
 
 $json=array();

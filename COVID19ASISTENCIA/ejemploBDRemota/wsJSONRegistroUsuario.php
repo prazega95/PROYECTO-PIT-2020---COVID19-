@@ -1,8 +1,8 @@
 <?PHP
 $hostname_localhost = "localhost";
-$database_localhost = "id13648985_proyectocovid19"; 
-$username_localhost = "id13648985_covid19"; 
-$password_localhost = "Prado123456789!"; 
+$database_localhost = "proyecto_covid19"; 
+$username_localhost = "root"; 
+$password_localhost = ""; 
 
 $json = array(); 
 
@@ -24,6 +24,13 @@ $json = array();
 
     $conexion = mysqli_connect($hostname_localhost,$username_localhost,$password_localhost,$database_localhost);   
 
+	
+	/*Consultar si el valor es 0 (no hay considencias se registra), si el row es 1 es porque existe igual registro y no registra*/
+	$sql= mysqli_query($conexion,"SELECT COUNT(*) AS total FROM tb_usuario WHERE doc_usuario='{$documento}'");
+    $row=mysqli_fetch_object($sql);
+    if($row->total == 0){
+
+	
     $insert="INSERT INTO tb_usuario(nom_usuario, ape_usuario, TipoDoc_usuario, doc_usuario, tel_usuario, login_usuario, pass_usuario) VALUES('{$nombre}','{$apellido}','{$tipoDocumento}','{$documento}','{$telefono}','{$usuario}','{$clave}')";
     $resultado_insert=mysqli_query($conexion,$insert);
 
@@ -37,10 +44,7 @@ $json = array();
 			mysqli_close($conexion);
 			echo json_encode($json);
         }
-		
-			
-		
-		
+
         else{
          $resulta["nombre"]="NO registra";
          $resulta["apellido"]="NO registra";
@@ -53,18 +57,6 @@ $json = array();
          $json['tb_usuario'][]=$resulta;
            echo json_encode($json);
         }     
-    }
-        else{
-         $resulta["nombre"]="WS NO retorna";
-         $resulta["apellido"]="WS NO retorna";
-		 $resulta["tipoDocumento"]="WS NO retorna";
-         $resulta["documento"]="WS NO retorna";
-         $resulta["telefono"]="WS NO retorna";
-         $resulta["usuario"]="WS NO retorna";
-         $resulta["clave"]="WS NO retorna";
-		 
-         $json['tb_usuario'][]=$resulta;
-         echo json_encode($json);
-        }
-
+     }
+  }
 ?>

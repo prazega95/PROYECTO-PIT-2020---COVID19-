@@ -1,8 +1,8 @@
 <?PHP
 $hostname_localhost = "localhost";
-$database_localhost = "id13648985_proyectocovid19"; 
-$username_localhost = "id13648985_covid19"; 
-$password_localhost = "Prado123456789!"; 
+$database_localhost = "proyecto_covid19"; 
+$username_localhost = "root"; 
+$password_localhost = ""; 
 
 $json = array(); 
 
@@ -22,6 +22,7 @@ $json = array();
 	 isset ($_GET["SextoSintoma"]) &&
 	 isset ($_GET["Ninguna"]) &&	
      isset ($_GET["Email"]) &&
+	 isset ($_GET["Fecha"]) &&
      isset ($_GET["Condicion"]) &&			 
      isset ($_GET["cod_usuario"])) { 
         
@@ -41,8 +42,9 @@ $json = array();
 	$sintomas14 = $_GET['SextoSintoma'];
     $sintomas15 = $_GET['Ninguna']; 
     $sintomas16 = $_GET['Email']; 	
-	$sintomas17 = $_GET['Condicion']; 
-	$sintomas18 = $_GET['cod_usuario'];
+	$sintomas17 = $_GET['Fecha']; 	
+	$sintomas18 = $_GET['Condicion']; 
+	$sintomas19 = $_GET['cod_usuario'];
  
 
     $conexion = mysqli_connect($hostname_localhost,$username_localhost,$password_localhost,$database_localhost);   
@@ -63,6 +65,7 @@ $json = array();
 									 SextoSintoma,
 									 Ninguna,
 									 Email,
+									 Fecha,
 									 Condicion,
 									 cod_usuario) VALUES('{$sintomas1}',
 									                        '{$sintomas2}',
@@ -81,7 +84,8 @@ $json = array();
 															'{$sintomas15}',
 															'{$sintomas16}',
 															'{$sintomas17}',
-														    '{$sintomas18}')";
+															'{$sintomas18}',
+														    '{$sintomas19}')";
     $resultado_insert=mysqli_query($conexion,$insert);
 
     if($resultado_insert){
@@ -113,7 +117,8 @@ $json = array();
 		 $resulta["sintomas16"]="NO registra";
 		 $resulta["sintomas17"]="NO registra";
 	     $resulta["sintomas18"]="NO registra";
-		 
+		 $resulta["sintomas19"]="NO registra";
+		   
          $json['tb_sintomas'][]=$resulta;
            echo json_encode($json);
         }     
@@ -137,7 +142,8 @@ $json = array();
 		 $resulta["sintomas16"]="WS NO retorna";
 		 $resulta["sintomas17"]="WS NO retorna";
          $resulta["sintomas18"]="WS NO retorna";
-		 
+		 $resulta["sintomas19"]="WS NO retorna";
+			 
          $json['tb_sintomas'][]=$resulta;
          echo json_encode($json);
         }

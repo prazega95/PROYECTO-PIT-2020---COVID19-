@@ -1,11 +1,13 @@
 <?php
-$hostname_localhost = "localhost";
-$database_localhost = "id13648985_proyectocovid19"; 
-$username_localhost = "id13648985_covid19"; 
-$password_localhost = "Prado123456789!"; 
+$hostname='localhost';
+$database='proyecto_covid19';
+$username='root';
+$password='';
 
-$conexion=new mysqli($hostname_localhost,$username_localhost,$password_localhost,$database_localhost);
+$conexion=new mysqli($hostname,$username,$password,$database);
+echo 'Connected successfully';
 if($conexion->connect_errno){
+	
     echo "El sitio web está experimentado problemas";
 }
 ?>
