@@ -61,7 +61,7 @@
         android:layout_marginEnd="8dp"
 
         android:layout_marginStart="32dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="15dp"
         android:fontFamily="@font/regular"
         android:gravity="center"
         android:text="REGISTRA TU LOCALIDAD"
@@ -77,7 +77,7 @@
         android:id="@+id/linearLayout1"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="15dp"
         android:orientation="horizontal"
         app:layout_constraintTop_toBottomOf="@+id/textTitulo"
         tools:ignore="MissingConstraints"
@@ -238,7 +238,7 @@
         android:layout_height="20dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="5dp"
         android:gravity="center"
         android:hint="_______________________________________________"
         app:layout_constraintEnd_toEndOf="parent"
@@ -256,7 +256,7 @@
         android:id="@+id/edtDireccionGPS"
 
         android:layout_width="350dp"
-        android:layout_height="63dp"
+        android:layout_height="80dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
 
@@ -275,7 +275,7 @@
         android:id="@+id/edtDireccionManual"
 
         android:layout_width="350dp"
-        android:layout_height="64dp"
+        android:layout_height="80dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
 
@@ -299,7 +299,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
 
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="15dp"
         android:background="@drawable/button"
         android:fontFamily="@font/regular"
         android:gravity="center"
@@ -310,22 +310,18 @@
         app:layout_constraintTop_toBottomOf="@+id/edtDireccionManual" />
 
 
-
-
-
     <TextView
         android:id="@+id/txtLatitud"
         android:layout_width="137dp"
         android:layout_height="20dp"
 
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
         android:fontFamily="@font/regular"
         android:gravity="center"
         android:hint="Latitud:"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnSiguienteSint1" />
-
 
     <TextView
         android:id="@+id/txtLongitud"
@@ -334,15 +330,14 @@
         android:layout_height="20dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="20dp"
         android:fontFamily="@font/regular"
         android:gravity="center"
         android:hint="Longitud:"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.607"
         app:layout_constraintStart_toEndOf="@+id/txtLatitud"
         app:layout_constraintTop_toBottomOf="@+id/btnSiguienteSint1" />
-
 
     <TextView
         android:id="@+id/extraerDepartamento"
@@ -360,14 +355,15 @@
         android:id="@+id/extraerProvincia"
         android:layout_width="121dp"
         android:layout_height="28dp"
-        android:layout_marginBottom="88dp"
+        android:layout_marginTop="52dp"
         android:fontFamily="@font/regular"
         android:text="Provincia"
+
         android:textSize="15dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/extraerDistrito"
-        app:layout_constraintHorizontal_bias="0.69"
-        app:layout_constraintStart_toEndOf="@+id/extraerDepartamento" />
+        app:layout_constraintHorizontal_bias="0.458"
+        app:layout_constraintStart_toEndOf="@+id/extraerDepartamento"
+        app:layout_constraintTop_toBottomOf="@+id/btnSiguienteSint1" />
 
     <TextView
         android:id="@+id/extraerDistrito"
@@ -380,6 +376,46 @@
         android:textSize="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtLongitud" />
+
+
+    <TextView
+        android:id="@+id/txtGPSdepartamento"
+        android:layout_width="117dp"
+        android:layout_height="77dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/regular"
+        android:text="Departamento extraido GPS"
+        android:textSize="15dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/extraerDepartamento" />
+
+    <TextView
+        android:id="@+id/txtGPSprovincia"
+        android:layout_width="118dp"
+        android:layout_height="77dp"
+        android:layout_marginBottom="48dp"
+        android:fontFamily="@font/regular"
+        android:text="Provincia Extraida GPS"
+        android:textSize="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/extraerDistrito"
+        app:layout_constraintHorizontal_bias="0.464"
+        app:layout_constraintStart_toEndOf="@+id/txtGPSdepartamento"
+        app:layout_constraintTop_toBottomOf="@+id/extraerProvincia"
+        app:layout_constraintVertical_bias="0.291" />
+
+    <TextView
+        android:id="@+id/txtGPSdistrito"
+        android:layout_width="117dp"
+        android:layout_height="77dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/regular"
+        android:text="Distrito Extraida GPS"
+        android:textSize="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/extraerDistrito" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

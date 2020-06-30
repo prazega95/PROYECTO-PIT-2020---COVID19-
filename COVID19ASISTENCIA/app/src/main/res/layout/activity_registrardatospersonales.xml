@@ -38,6 +38,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="25dp"
                 android:gravity="center"
+                android:fontFamily="@font/light"
                 android:text="Agrega tus nombre y apellidos__________________" />
 
             <EditText
@@ -47,10 +48,6 @@
                 android:layout_marginEnd="15dp"
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="15dp"
-
-                android:digits="abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ "
-                android:inputType="textCapCharacters"
-
                 android:background="@drawable/input_field"
                 android:fontFamily="@font/light"
                 android:hint="Nombres:"
@@ -63,28 +60,19 @@
                 android:layout_marginEnd="15dp"
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="30dp"
-
-                android:digits="abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ "
-                android:inputType="textCapCharacters"
-
                 android:background="@drawable/input_field"
                 android:fontFamily="@font/light"
                 android:hint="Apellidos"
                 android:maxLength="50"/>
 
-            <TextView
-                android:id="@+id/obtenerDocumento"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="15dp"
-                android:layout_marginStart="25dp"
-                android:hint="Documento" />
+
             <TextView
                 android:id="@+id/editText6"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="50dp"
                 android:gravity="center"
+                android:fontFamily="@font/light"
                 android:text="Selecciona y agrega tu Nº de Documento__________" />
 
 
@@ -96,11 +84,11 @@
 
                 <Spinner
                     android:id="@+id/spinnerTipoDoc"
-                    android:layout_width="55dp"
+                    android:layout_width="100dp"
                     android:layout_height="50sp"
                     android:layout_gravity="center"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="3dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="10dp"
                     android:background="@drawable/stilospinner"
                     android:maxLines="1"
                     android:spinnerMode="dialog"
@@ -111,33 +99,56 @@
                     android:layout_width="143dp"
                     android:layout_height="55sp"
                     android:layout_weight="1"
+                    android:layout_marginEnd="15dp"
                     android:background="@drawable/input_field"
                     android:fontFamily="@font/light"
-                    android:hint="Nº DNI:"
-                    android:inputType="number"
-                    android:maxLength="9"/>
-
-                <EditText
-                    android:id="@+id/edtDocumentosRUC"
-                    android:layout_width="179dp"
-                    android:layout_height="55sp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/input_field"
-                    android:fontFamily="@font/light"
-                    android:hint="Nº RUC:"
+                    android:hint="Nº Documento:"
                     android:inputType="number"
                     android:maxLength="12"/>
-
             </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/formatoRuc1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="15dp"
+                android:fontFamily="@font/light"
+                android:text="RUC 10: Personas Naturales" />
+            <TextView
+                android:id="@+id/formatoRuc2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:fontFamily="@font/light"
+                android:text="RUC 20: Personas Jurídicas" />
+            <TextView
+                android:id="@+id/formatoRuc3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:fontFamily="@font/light"
+                android:text="RUC 15 o 17: Personas con carnet de fuerzas armadas o de extranjería" />
+
+
+
+
+
+
+
+
+
 
             <TextView
                 android:id="@+id/editText5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="20dp"
                 android:gravity="center"
-                android:text="Agrega tu Nº Telefónico__________________________" />
+                android:fontFamily="@font/light"
+                android:text="Agrega tu Nº Telefónico, Formato: +51(9##)-###-###" />
+
 
 
             <com.santalu.maskedittext.MaskEditText
@@ -151,7 +162,7 @@
                 android:background="@drawable/input_field"
                 android:fontFamily="@font/light"
                 android:inputType="phone"
-                app:met_mask="+51(###)-###-###" />
+                app:met_mask="+51(###) ### ###" />
 
 
 
@@ -163,6 +174,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="40dp"
                 android:gravity="center"
+                android:fontFamily="@font/light"
                 android:text="Agrega tu Usuario_______________________________" />
 
             <EditText
@@ -172,10 +184,6 @@
                 android:layout_marginEnd="50dp"
                 android:layout_marginStart="50dp"
                 android:layout_marginTop="15dp"
-
-                android:digits="abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ "
-                android:inputType="textCapCharacters"
-
                 android:background="@drawable/input_field"
                 android:fontFamily="@font/light"
                 android:hint="Usuario:"

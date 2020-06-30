@@ -184,8 +184,8 @@ public class triaje extends Fragment implements Response.Listener<JSONObject>,Re
     public void onErrorResponse(VolleyError error) {
 
         progreso.hide();
-        //Toast.makeText(getContext(),"No se pudo Consultar "+error.toString(),Toast.LENGTH_SHORT).show();
-        Toast.makeText(getContext(),"Documento NO Registrado !",Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getContext(),"ERROR VOLLEY : "+error.toString(),Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(),"¡Documento NO encontrado ó Registrado!",Toast.LENGTH_SHORT).show();
         Log.i("ERROR",error.toString());
     }
 

@@ -186,7 +186,7 @@ public class sintomas2 extends AppCompatActivity {
                 startActivity(int1);
                }
                 else{
-                Toast.makeText(sintomas2.this,"Complete Todos los Campos",Toast.LENGTH_SHORT).show();
+                Toast.makeText(sintomas2.this,"¡Complete Todos los Campos!",Toast.LENGTH_SHORT).show();
               }
 
             }

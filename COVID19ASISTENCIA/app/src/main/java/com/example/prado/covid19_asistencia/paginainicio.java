@@ -17,6 +17,7 @@ import android.view.MenuItem;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 
 public class paginainicio extends AppCompatActivity
@@ -76,20 +77,24 @@ public class paginainicio extends AppCompatActivity
 
 
 
-
+   /*METODO DE REGRESAR POR EL BOTON DEL CELULAR MAS NO POR EL TEXTVIEW regresar al menu*/
     @Override
     public void onBackPressed() {
 
-       /* DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
 
+        Intent int1 = new Intent(paginainicio.this,paginainicio.class);
+        startActivity(int1);
+
+
+       /* DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         Toast.makeText(getApplicationContext(),"CIERRE SU SESION PARA SALIR", Toast.LENGTH_SHORT).show();*/
 
-       DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+      /* DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
             super.onBackPressed();
-        }
+        }*/
 
     }
 
